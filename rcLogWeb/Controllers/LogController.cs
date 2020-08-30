@@ -1,10 +1,15 @@
-﻿using Microsoft.AspNetCore.Mvc;
+using Microsoft.AspNetCore.Mvc;
 
 namespace rcLogWeb.Controllers
 {
-    public class HomeController : Controller
+    public class LogController : Controller
     {
         public IActionResult Index()
+        {
+            return View();
+        }
+
+        public IActionResult Sistemas()
         {
             return View();
         }

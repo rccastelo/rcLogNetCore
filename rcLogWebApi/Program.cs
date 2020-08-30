@@ -17,6 +17,7 @@ namespace rcLogWebApi
                 .UseContentRoot(Directory.GetCurrentDirectory())
                 .UseIISIntegration()
                 .UseStartup<Startup>()
+                .UseUrls("http://localhost:5801/")
                 .Build();
 
             host.Run();
