@@ -1,7 +1,7 @@
 using System.IO;
 using Microsoft.Extensions.Configuration;
 
-namespace rcLogApi
+namespace rcLogDatabase
 {
      public class Settings
     {
@@ -19,7 +19,7 @@ namespace rcLogApi
 
             section = configuration.GetSection(sectionName);
 
-            return section.GetValue<string>(key);
+            return section.GetSection(key).Value;
         }
 
         public static string GetSetting(string key)
