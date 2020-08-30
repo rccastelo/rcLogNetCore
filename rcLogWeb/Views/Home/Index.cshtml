@@ -1,0 +1,19 @@
+﻿@{
+    Layout = "_Acesso";
+    ViewData["Title"] = "";
+}
+
+<br><br>
+<div id="divIdentifica">
+    <form asp-controller="Log" asp-action="Index" asp-anti-forgery method="POST">
+        <span class="txtDestaqueClr">Identificação</span><br>
+        <br><br>
+        <label class="txtPadraoClr">Nome de Usuário:</label><br>
+        <input type="text" class="caixaTexto"><br>
+        <br>
+        <label class="txtPadraoClr">Senha:</label><br>
+        <input type="password" class="caixaTexto"><br>
+        <br><br>
+        <button  class="botaoPadrao txtBotao">Entrar</button><br>
+    </form>
+</div>

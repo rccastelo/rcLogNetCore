@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>rcLog - @ViewData["Title"]</title>
+
+    <link rel="stylesheet" href="~/css/site.css" asp-append-version="true" />
+</head>
+<body>
+    <div class="divTudo">
+        <div class="divTopo">
+            <div class="divMeio">
+                <div class="divBarraMenu">
+                    <div class="Logo txtBarraMenu">rcLog</div>
+                </div>
+            </div>
+        </div>
+
+        <div class="divMeio">
+            @RenderBody()
+        </div>
+    </div>
+
+    @RenderSection("Scripts", required: false)
+</body>
+</html>
