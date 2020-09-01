@@ -1,5 +1,7 @@
-﻿using Microsoft.AspNetCore.Builder;
+﻿using Microsoft.AspNetCore.Authentication.Cookies;
+using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
+using Microsoft.AspNetCore.Http;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Logging;
@@ -23,6 +25,14 @@ namespace rcLogWeb
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
+            //services.AddHttpContextAccessor();
+            services.AddSingleton<IHttpContextAccessor, HttpContextAccessor>();
+
+            services.Configure<IISOptions>(options => 
+            {
+                options.ForwardClientCertificate = false;
+            });
+
             // Add framework services.
             services.AddMvc();
         }
@@ -43,6 +53,16 @@ namespace rcLogWeb
             }
 
             app.UseStaticFiles();
+
+            app.UseCookieAuthentication(
+                new CookieAuthenticationOptions() {
+                    AuthenticationScheme = CookieAuthenticationDefaults.AuthenticationScheme,
+                    LoginPath = new PathString("/Home/Index"),
+                    AccessDeniedPath = new PathString("/Home/Index"),
+                    AutomaticAuthenticate = true,
+                    AutomaticChallenge = true
+                }
+            );
 
             app.UseMvc(routes =>
             {

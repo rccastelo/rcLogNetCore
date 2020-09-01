@@ -4,7 +4,7 @@ body { background-color: #333333;
     "Noto Sans", sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji"; }
 .divTudo { max-width: 100%; }
 .divMeio { display: block; min-width: 770px; max-width: 1600px; margin: 0 auto; text-align: justify; }
-#divIdentifica { display: block; width: 300px; height: 280px; margin: 0 auto; text-align: justify; 
+#divIdentifica { display: block; width: 300px; height: 300px; margin: 0 auto; text-align: justify; 
     padding: 30px; background-color: #555; border: 1px solid white; }
 .divBarraMenu { display: inline-block; width: 100%; text-align: justify; height: 50px; 
     padding-top: 10px; border-bottom: 1px solid white; }
@@ -17,4 +17,4 @@ body { background-color: #333333;
 .txtPadraoClr { font-size: 18px; line-height: 18px; color: white; text-decoration: none; }
 .botaoPadrao { width: 100px; height: 40px; }
 .txtBotao { font-size: 18px; line-height: 18px; color: black; text-decoration: none; }
-.caixaTexto { width: 250px; font-size: 18px; line-height: 18px; margin-top: 5px; }
+.caixaTexto { width: 250px; height: 26px; padding: 3px; font-size: 18px; line-height: 18px; margin-top: 5px; }
