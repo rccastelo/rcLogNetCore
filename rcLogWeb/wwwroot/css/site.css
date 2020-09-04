@@ -11,6 +11,8 @@ body { background-color: #333333;
 .Logo { float: left; padding: 10px; }
 .Opcoes { float: left; padding: 10px; }
 .Usuario { float: right; padding: 10px; }
+.Bloqueio { float: right; padding: 10px; }
+.txtBloqueio { font-weight: bold; font-size: 20px; line-height: 20px; color: red; text-decoration: none; }
 .txtBarraMenu { font-weight: bold; font-size: 20px; line-height: 20px; color: white; text-decoration: none; }
 .menuOpcao { padding-left: 25px; }
 .txtDestaqueClr { font-weight: bold; font-size: 22px; line-height: 22px; color: white; text-decoration: none; }
