@@ -17,9 +17,15 @@ namespace rcLogWeb.Controllers
         [HttpGet]
         public IActionResult Index()
         {
-            AutenticaTransfer autenticaTransfer = new AutenticaTransfer(); 
+            string returnUrl = httpContext.HttpContext.Request.Query["ReturnUrl"];
 
-            return View(autenticaTransfer);
+            if(!String.IsNullOrEmpty(returnUrl)) {
+                ViewData["Bloqueio"] = "Acesso Negado";
+            } else {
+                ViewData["Bloqueio"] = "";
+            }
+
+            return View();
         }
 
         [HttpPost]
@@ -45,8 +51,6 @@ namespace rcLogWeb.Controllers
             if (autentica.Erro || !autentica.Validacao || !autentica.Autenticado) {
                 return View("Index", autentica);
             } else {
-                ViewData["Usuario"] = UsuarioNome;
-                
                 return RedirectToAction("Index", "Log");
             }
         }
