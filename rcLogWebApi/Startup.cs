@@ -1,12 +1,16 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Security.Cryptography;
 using System.Threading.Tasks;
+using Microsoft.AspNetCore.Authentication.JwtBearer;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Logging;
+using Microsoft.IdentityModel.Tokens;
 
 namespace rcLogWebApi
 {
@@ -41,6 +45,25 @@ namespace rcLogWebApi
             {
                 app.UseDeveloperExceptionPage();
             }
+
+            var tokenValidationParameters = new TokenValidationParameters {
+                ValidateIssuerSigningKey = true,
+                IssuerSigningKey = new SymmetricSecurityKey(System.Text.Encoding.UTF8.GetBytes("rc-Log-Autenticacao")),
+                ValidateIssuer = true,
+                ValidIssuer = "rcLogAutentica",
+                ValidateAudience = true,
+                ValidAudience = "Teste",
+                ValidateLifetime = true,
+                ClockSkew = TimeSpan.FromMinutes(5)
+            };
+
+            var bearerOptions = new JwtBearerOptions {
+                AutomaticAuthenticate = true,
+                AutomaticChallenge = true,
+                TokenValidationParameters = tokenValidationParameters
+            };
+
+            app.UseJwtBearerAuthentication(bearerOptions);
 
             app.UseMvc();
         }
