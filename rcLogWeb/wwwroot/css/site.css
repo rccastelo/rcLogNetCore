@@ -1,5 +1,5 @@
 ﻿* { padding: 0; margin: 0; }
-body { background-color: #333333;
+body { background-color: #1e1e1e;
     font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, 
     "Noto Sans", sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji"; }
 .divTudo { max-width: 100%; }
@@ -16,7 +16,30 @@ body { background-color: #333333;
 .txtBarraMenu { font-weight: bold; font-size: 20px; line-height: 20px; color: white; text-decoration: none; }
 .menuOpcao { padding-left: 25px; }
 .txtDestaqueClr { font-weight: bold; font-size: 22px; line-height: 22px; color: white; text-decoration: none; }
-.txtPadraoClr { font-size: 18px; line-height: 18px; color: white; text-decoration: none; }
+.txtPadraoClr, .txtPadraoClr:hover, .txtPadraoClr:visited { 
+    font-size: 18px; line-height: 18px; color: white; text-decoration: none; }
+.txtPadraoClrGrd, .txtPadraoClrGrd:hover, .txtPadraoClrGrd:visited { 
+    font-size: 32px; line-height: 32px; color: white; text-decoration: none; }
 .botaoPadrao { width: 100px; height: 40px; }
 .txtBotao { font-size: 18px; line-height: 18px; color: black; text-decoration: none; }
 .caixaTexto { width: 250px; height: 26px; padding: 3px; font-size: 18px; line-height: 18px; margin-top: 5px; }
+.txtPaginacaoInfo { font-size: 16px; color: #888; }
+.divConteudo { display: block; min-width: 770px; max-width: 1600px; margin: 0 auto; text-align: center; }
+.divConteudoMeio { display: inline-block; padding: 20px; }
+.divPaginacaoInfo { padding-top: 20px; }
+
+/* -- Tabela -- */
+.tabela { border: 1px solid white; border-collapse: collapse; }
+.tabela th { border: 1px solid white; border-collapse: collapse; padding: 5px; text-align: left; }
+.tabela td { border: 1px solid white; border-collapse: collapse; padding: 5px; text-align: left; }
+
+/* -- Paginacao -- */
+.navBarra { width: 100%; text-align: center; color: #fff; }
+.navBarra .botaoGr { width: 100px; display: inline-block; }
+.navBarra .botaoGr:hover { background-color: #888; }
+.navBarra .botaoPq { width: 20px; display: inline-block; }
+.navBarra .botaoPq:hover { background-color: #888; }
+.navBarra .navCaixaGr { width: 100px; display: inline-block; color: #888; }
+.navBarra .navCaixaPq { width: 20px; display: inline-block; color: #888; }
+.navBarra .navCaixaSel { width: 20px; display: inline-block; background-color: #888; color: #000; }
+.txtPaginacao, .txtPaginacao:hover, .txtPaginacao:visited { font-size: 16px; color: #fff; }
