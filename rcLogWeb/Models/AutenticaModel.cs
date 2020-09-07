@@ -3,16 +3,16 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Security.Claims;
 using System.Threading.Tasks;
-using Microsoft.AspNetCore.Authentication;
-using Microsoft.AspNetCore.Authentication.Cookies;
 using Microsoft.AspNetCore.Http;
 using rcLogTransfers;
 using rcLogWeb.Services;
 
 namespace rcLogWeb.Models
 {
-    public class AutenticaModel
+  public class AutenticaModel
     {
+        private readonly string cookieRcLog = "CookieRcLog";
+
         private readonly IHttpContextAccessor httpContext;
 
         public AutenticaModel(IHttpContextAccessor accessor)
@@ -37,10 +37,10 @@ namespace rcLogWeb.Models
                             new Claim("token", autentica.Token)
                         };
 
-                        ClaimsIdentity claimsIdentity = new ClaimsIdentity(claims, CookieAuthenticationDefaults.AuthenticationScheme);
+                        ClaimsIdentity claimsIdentity = new ClaimsIdentity(claims, cookieRcLog);
                         ClaimsPrincipal claimsPrincipal = new ClaimsPrincipal(claimsIdentity);
 
-                        await httpContext.HttpContext.Authentication.SignInAsync(CookieAuthenticationDefaults.AuthenticationScheme, claimsPrincipal);
+                        await httpContext.HttpContext.Authentication.SignInAsync(cookieRcLog, claimsPrincipal);
                     }
                 }
             } catch (Exception ex) {
@@ -84,7 +84,7 @@ namespace rcLogWeb.Models
 
         public void Sair() 
         {
-            httpContext.HttpContext.Authentication.SignOutAsync(CookieAuthenticationDefaults.AuthenticationScheme);
+            httpContext.HttpContext.Authentication.SignOutAsync(cookieRcLog);
         }
     }
 }

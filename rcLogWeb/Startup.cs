@@ -56,7 +56,7 @@ namespace rcLogWeb
 
             app.UseCookieAuthentication(
                 new CookieAuthenticationOptions() {
-                    AuthenticationScheme = CookieAuthenticationDefaults.AuthenticationScheme,
+                    AuthenticationScheme = "CookieRcLog",
                     LoginPath = new PathString("/Home/Index"),
                     AccessDeniedPath = new PathString("/Home/Index"),
                     AutomaticAuthenticate = true,
