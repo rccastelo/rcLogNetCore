@@ -48,11 +48,11 @@ namespace rcLogWebApi
 
             var tokenValidationParameters = new TokenValidationParameters {
                 ValidateIssuerSigningKey = true,
-                IssuerSigningKey = new SymmetricSecurityKey(System.Text.Encoding.UTF8.GetBytes("rc-Log-Autenticacao")),
+                IssuerSigningKey = new SymmetricSecurityKey(System.Text.Encoding.UTF8.GetBytes("rcLogWebApi-Chave-Autenticacao")),
                 ValidateIssuer = true,
-                ValidIssuer = "rcLogAutentica",
+                ValidIssuer = "rcLogWebApi",
                 ValidateAudience = true,
-                ValidAudience = "Teste",
+                ValidAudience = "rcLogWeb",
                 ValidateLifetime = true,
                 ClockSkew = TimeSpan.FromMinutes(5)
             };

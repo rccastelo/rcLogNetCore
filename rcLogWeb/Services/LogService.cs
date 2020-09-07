@@ -22,128 +22,128 @@ namespace rcLogWeb.Services
             autenticaService = new AutenticaService();
         }
 
-        public async Task<LogTransfer> Incluir(LogTransfer logTransfer, string autorizacao)
-        {
-            LogTransfer log = null;
-            HttpResponseMessage resposta = null;
-            string mensagemRetono = null;
+        // public async Task<LogTransfer> Incluir(LogTransfer logTransfer, string autorizacao)
+        // {
+        //     LogTransfer log = null;
+        //     HttpResponseMessage resposta = null;
+        //     string mensagemRetono = null;
             
-            try {
-                httpClient.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("Bearer", autorizacao);
+        //     try {
+        //         httpClient.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("Bearer", autorizacao);
 
-                resposta = await httpClient.PostAsync($"{nomeServico}", new StringContent(JsonConvert.SerializeObject(logTransfer)));
+        //         resposta = await httpClient.PostAsync($"{nomeServico}", new StringContent(JsonConvert.SerializeObject(logTransfer)));
 
-                if (resposta.IsSuccessStatusCode) {
-                    log = JsonConvert.DeserializeObject<LogTransfer>(resposta.Content.ReadAsStringAsync().Result);
-                } else if (resposta.StatusCode == HttpStatusCode.BadRequest) {
-                    log = JsonConvert.DeserializeObject<LogTransfer>(resposta.Content.ReadAsStringAsync().Result);
-                } else if (resposta.StatusCode == HttpStatusCode.Unauthorized) {
-                    mensagemRetono = $"Acesso ao serviço {nomeServico} Incluir não autorizado";
-                } else {
-                    mensagemRetono = $"Não foi possível acessar o serviço {nomeServico} Incluir";
-                }
+        //         if (resposta.IsSuccessStatusCode) {
+        //             log = JsonConvert.DeserializeObject<LogTransfer>(resposta.Content.ReadAsStringAsync().Result);
+        //         } else if (resposta.StatusCode == HttpStatusCode.BadRequest) {
+        //             log = JsonConvert.DeserializeObject<LogTransfer>(resposta.Content.ReadAsStringAsync().Result);
+        //         } else if (resposta.StatusCode == HttpStatusCode.Unauthorized) {
+        //             mensagemRetono = $"Acesso ao serviço {nomeServico} Incluir não autorizado";
+        //         } else {
+        //             mensagemRetono = $"Não foi possível acessar o serviço {nomeServico} Incluir";
+        //         }
 
-                if (!string.IsNullOrEmpty(mensagemRetono)) {
-                    log = new LogTransfer();
+        //         if (!string.IsNullOrEmpty(mensagemRetono)) {
+        //             log = new LogTransfer();
                     
-                    log.Validacao = false;
-                    log.Erro = true;
-                    log.IncluirMensagem(mensagemRetono);
-                }
-            } catch (Exception ex) {
-                log = new LogTransfer();
+        //             log.Validacao = false;
+        //             log.Erro = true;
+        //             log.IncluirMensagem(mensagemRetono);
+        //         }
+        //     } catch (Exception ex) {
+        //         log = new LogTransfer();
 
-                log.Validacao = false;
-                log.Erro = true;
-                log.IncluirMensagem("Erro em LogService Incluir [" + ex.Message + "]");
-            } finally {
-                resposta = null;
-            }
+        //         log.Validacao = false;
+        //         log.Erro = true;
+        //         log.IncluirMensagem("Erro em LogService Incluir [" + ex.Message + "]");
+        //     } finally {
+        //         resposta = null;
+        //     }
 
-            return log;
-        }
+        //     return log;
+        // }
 
-        public async Task<LogTransfer> Alterar(LogTransfer logTransfer, string autorizacao)
-        {
-            LogTransfer log = null;
-            HttpResponseMessage resposta = null;
-            string mensagemRetono = null;
+        // public async Task<LogTransfer> Alterar(LogTransfer logTransfer, string autorizacao)
+        // {
+        //     LogTransfer log = null;
+        //     HttpResponseMessage resposta = null;
+        //     string mensagemRetono = null;
             
-            try {
-                httpClient.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("Bearer", autorizacao);
+        //     try {
+        //         httpClient.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("Bearer", autorizacao);
 
-                resposta = await httpClient.PutAsync($"{nomeServico}", new StringContent(JsonConvert.SerializeObject(logTransfer)));
+        //         resposta = await httpClient.PutAsync($"{nomeServico}", new StringContent(JsonConvert.SerializeObject(logTransfer)));
 
-                if (resposta.IsSuccessStatusCode) {
-                    log = JsonConvert.DeserializeObject<LogTransfer>(resposta.Content.ReadAsStringAsync().Result);
-                } else if (resposta.StatusCode == HttpStatusCode.BadRequest) {
-                    log = JsonConvert.DeserializeObject<LogTransfer>(resposta.Content.ReadAsStringAsync().Result);
-                } else if (resposta.StatusCode == HttpStatusCode.Unauthorized) {
-                    mensagemRetono = $"Acesso ao serviço {nomeServico} Alterar não autorizado";
-                } else {
-                    mensagemRetono = $"Não foi possível acessar o serviço {nomeServico} Alterar";
-                }
+        //         if (resposta.IsSuccessStatusCode) {
+        //             log = JsonConvert.DeserializeObject<LogTransfer>(resposta.Content.ReadAsStringAsync().Result);
+        //         } else if (resposta.StatusCode == HttpStatusCode.BadRequest) {
+        //             log = JsonConvert.DeserializeObject<LogTransfer>(resposta.Content.ReadAsStringAsync().Result);
+        //         } else if (resposta.StatusCode == HttpStatusCode.Unauthorized) {
+        //             mensagemRetono = $"Acesso ao serviço {nomeServico} Alterar não autorizado";
+        //         } else {
+        //             mensagemRetono = $"Não foi possível acessar o serviço {nomeServico} Alterar";
+        //         }
 
-                if (!string.IsNullOrEmpty(mensagemRetono)) {
-                    log = new LogTransfer();
+        //         if (!string.IsNullOrEmpty(mensagemRetono)) {
+        //             log = new LogTransfer();
                     
-                    log.Validacao = false;
-                    log.Erro = true;
-                    log.IncluirMensagem(mensagemRetono);
-                }
-            } catch (Exception ex) {
-                log = new LogTransfer();
+        //             log.Validacao = false;
+        //             log.Erro = true;
+        //             log.IncluirMensagem(mensagemRetono);
+        //         }
+        //     } catch (Exception ex) {
+        //         log = new LogTransfer();
 
-                log.Validacao = false;
-                log.Erro = true;
-                log.IncluirMensagem("Erro em LogService Alterar [" + ex.Message + "]");
-            } finally {
-                resposta = null;
-            }
+        //         log.Validacao = false;
+        //         log.Erro = true;
+        //         log.IncluirMensagem("Erro em LogService Alterar [" + ex.Message + "]");
+        //     } finally {
+        //         resposta = null;
+        //     }
 
-            return log;
-        }
+        //     return log;
+        // }
 
-        public async Task<LogTransfer> Excluir(int id, string autorizacao)
-        {
-            LogTransfer log = null;
-            HttpResponseMessage resposta = null;
-            string mensagemRetono = null;
+        // public async Task<LogTransfer> Excluir(int id, string autorizacao)
+        // {
+        //     LogTransfer log = null;
+        //     HttpResponseMessage resposta = null;
+        //     string mensagemRetono = null;
             
-            try {
-                httpClient.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("Bearer", autorizacao);
+        //     try {
+        //         httpClient.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("Bearer", autorizacao);
 
-                resposta = await httpClient.DeleteAsync($"{nomeServico}/{id}");
+        //         resposta = await httpClient.DeleteAsync($"{nomeServico}/{id}");
 
-                if (resposta.IsSuccessStatusCode) {
-                    log = JsonConvert.DeserializeObject<LogTransfer>(resposta.Content.ReadAsStringAsync().Result);
-                } else if (resposta.StatusCode == HttpStatusCode.BadRequest) {
-                    log = JsonConvert.DeserializeObject<LogTransfer>(resposta.Content.ReadAsStringAsync().Result);
-                } else if (resposta.StatusCode == HttpStatusCode.Unauthorized) {
-                    mensagemRetono = $"Acesso ao serviço {nomeServico} Excluir não autorizado";
-                } else {
-                    mensagemRetono = $"Não foi possível acessar o serviço {nomeServico} Excluir";
-                }
+        //         if (resposta.IsSuccessStatusCode) {
+        //             log = JsonConvert.DeserializeObject<LogTransfer>(resposta.Content.ReadAsStringAsync().Result);
+        //         } else if (resposta.StatusCode == HttpStatusCode.BadRequest) {
+        //             log = JsonConvert.DeserializeObject<LogTransfer>(resposta.Content.ReadAsStringAsync().Result);
+        //         } else if (resposta.StatusCode == HttpStatusCode.Unauthorized) {
+        //             mensagemRetono = $"Acesso ao serviço {nomeServico} Excluir não autorizado";
+        //         } else {
+        //             mensagemRetono = $"Não foi possível acessar o serviço {nomeServico} Excluir";
+        //         }
 
-                if (!string.IsNullOrEmpty(mensagemRetono)) {
-                    log = new LogTransfer();
+        //         if (!string.IsNullOrEmpty(mensagemRetono)) {
+        //             log = new LogTransfer();
                     
-                    log.Validacao = false;
-                    log.Erro = true;
-                    log.IncluirMensagem(mensagemRetono);
-                }
-            } catch (Exception ex) {
-                log = new LogTransfer();
+        //             log.Validacao = false;
+        //             log.Erro = true;
+        //             log.IncluirMensagem(mensagemRetono);
+        //         }
+        //     } catch (Exception ex) {
+        //         log = new LogTransfer();
 
-                log.Validacao = false;
-                log.Erro = true;
-                log.IncluirMensagem("Erro em LogService Excluir [" + ex.Message + "]");
-            } finally {
-                resposta = null;
-            }
+        //         log.Validacao = false;
+        //         log.Erro = true;
+        //         log.IncluirMensagem("Erro em LogService Excluir [" + ex.Message + "]");
+        //     } finally {
+        //         resposta = null;
+        //     }
 
-            return log;
-        }
+        //     return log;
+        // }
 
         public async Task<LogTransfer> ConsultarPorId(int id, string autorizacao)
         {
