@@ -15,89 +15,89 @@ namespace rcLogWeb.Models
             httpContext = accessor;
         }
 
-        public async Task<LogTransfer> Incluir(LogTransfer logTransfer)
-        {
-            LogService logService;
-            LogTransfer cor;
-            AutenticaModel autenticaModel;
-            string autorizacao;
+        // public async Task<LogTransfer> Incluir(LogTransfer logTransfer)
+        // {
+        //     LogService logService;
+        //     LogTransfer cor;
+        //     AutenticaModel autenticaModel;
+        //     string autorizacao;
 
-            try {
-                logService = new LogService();
-                autenticaModel = new AutenticaModel(httpContext);
+        //     try {
+        //         logService = new LogService();
+        //         autenticaModel = new AutenticaModel(httpContext);
 
-                autorizacao = autenticaModel.ObterToken();
+        //         autorizacao = autenticaModel.ObterToken();
 
-                cor = await logService.Incluir(logTransfer, autorizacao);
-            } catch (Exception ex) {
-                cor = new LogTransfer();
+        //         cor = await logService.Incluir(logTransfer, autorizacao);
+        //     } catch (Exception ex) {
+        //         cor = new LogTransfer();
 
-                cor.Validacao = false;
-                cor.Erro = true;
-                cor.IncluirMensagem("Erro em LogModel Incluir [" + ex.Message + "]");
-            } finally {
-                logService = null;
-                autenticaModel = null;
-            }
+        //         cor.Validacao = false;
+        //         cor.Erro = true;
+        //         cor.IncluirMensagem("Erro em LogModel Incluir [" + ex.Message + "]");
+        //     } finally {
+        //         logService = null;
+        //         autenticaModel = null;
+        //     }
 
-            return cor;
-        }
+        //     return cor;
+        // }
 
-        public async Task<LogTransfer> Alterar(LogTransfer logTransfer)
-        {
-            LogService logService;
-            LogTransfer cor;
-            AutenticaModel autenticaModel;
-            string autorizacao;
+        // public async Task<LogTransfer> Alterar(LogTransfer logTransfer)
+        // {
+        //     LogService logService;
+        //     LogTransfer cor;
+        //     AutenticaModel autenticaModel;
+        //     string autorizacao;
 
-            try {
-                logService = new LogService();
-                autenticaModel = new AutenticaModel(httpContext);
+        //     try {
+        //         logService = new LogService();
+        //         autenticaModel = new AutenticaModel(httpContext);
 
-                autorizacao = autenticaModel.ObterToken();
+        //         autorizacao = autenticaModel.ObterToken();
 
-                cor = await logService.Alterar(logTransfer, autorizacao);
-            } catch (Exception ex) {
-                cor = new LogTransfer();
+        //         cor = await logService.Alterar(logTransfer, autorizacao);
+        //     } catch (Exception ex) {
+        //         cor = new LogTransfer();
 
-                cor.Validacao = false;
-                cor.Erro = true;
-                cor.IncluirMensagem("Erro em LogModel Alterar [" + ex.Message + "]");
-            } finally {
-                logService = null;
-                autenticaModel = null;
-            }
+        //         cor.Validacao = false;
+        //         cor.Erro = true;
+        //         cor.IncluirMensagem("Erro em LogModel Alterar [" + ex.Message + "]");
+        //     } finally {
+        //         logService = null;
+        //         autenticaModel = null;
+        //     }
 
-            return cor;
-        }
+        //     return cor;
+        // }
 
-        public async Task<LogTransfer> Excluir(int id)
-        {
-            LogService logService;
-            LogTransfer cor;
-            AutenticaModel autenticaModel;
-            string autorizacao;
+        // public async Task<LogTransfer> Excluir(int id)
+        // {
+        //     LogService logService;
+        //     LogTransfer cor;
+        //     AutenticaModel autenticaModel;
+        //     string autorizacao;
 
-            try {
-                logService = new LogService();
-                autenticaModel = new AutenticaModel(httpContext);
+        //     try {
+        //         logService = new LogService();
+        //         autenticaModel = new AutenticaModel(httpContext);
 
-                autorizacao = autenticaModel.ObterToken();
+        //         autorizacao = autenticaModel.ObterToken();
 
-                cor = await logService.Excluir(id, autorizacao);
-            } catch (Exception ex) {
-                cor = new LogTransfer();
+        //         cor = await logService.Excluir(id, autorizacao);
+        //     } catch (Exception ex) {
+        //         cor = new LogTransfer();
 
-                cor.Validacao = false;
-                cor.Erro = true;
-                cor.IncluirMensagem("Erro em LogModel Excluir [" + ex.Message + "]");
-            } finally {
-                logService = null;
-                autenticaModel = null;
-            }
+        //         cor.Validacao = false;
+        //         cor.Erro = true;
+        //         cor.IncluirMensagem("Erro em LogModel Excluir [" + ex.Message + "]");
+        //     } finally {
+        //         logService = null;
+        //         autenticaModel = null;
+        //     }
 
-            return cor;
-        }
+        //     return cor;
+        // }
 
         public async Task<LogTransfer> ConsultarPorId(int id)
         {
