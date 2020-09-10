@@ -6,7 +6,7 @@
 
   <ItemGroup>
     <ProjectReference Include="..\rcLogTransfers\rcLogTransfers.csproj" />
-    <ProjectReference Include="..\rcLogEntities\rcLogEntities.csproj" />
+    <ProjectReference Include="..\rcLogDatabase\rcLogDatabase.csproj" />
     <ProjectReference Include="..\rcLogDatas\rcLogDatas.csproj" />
   </ItemGroup>
 
