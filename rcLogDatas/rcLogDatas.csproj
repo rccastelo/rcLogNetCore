@@ -1,5 +1,10 @@
 <Project Sdk="Microsoft.NET.Sdk">
 
+  <ItemGroup>
+    <ProjectReference Include="..\rcLogDatabase\rcLogDatabase.csproj" />
+    <ProjectReference Include="..\rcLogTransfers\rcLogTransfers.csproj" />
+  </ItemGroup>
+
   <PropertyGroup>
     <TargetFramework>netstandard1.4</TargetFramework>
   </PropertyGroup>
