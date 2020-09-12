@@ -9,9 +9,9 @@ namespace rcLogDatabase
         public MySqlCommand cmd = null;
         public LogMySqlDatabase db = null;
 
-        public LogMySqlComando(LogMySqlDatabase dbMySql)
+        public LogMySqlComando(LogMySqlDatabase pDB)
         {
-            this.db = dbMySql;
+            this.db = pDB;
 
             CriarComando();
             IncluirTransacao();

@@ -22,31 +22,31 @@ namespace rcLogTransfers
             this.Erro = false;
         }
 
-        public TransferLog(TransferLog transfer)
+        public TransferLog(TransferLog pTransfer)
         {
-            if (transfer != null) {
-                this.Validacao = transfer.Validacao;
-                this.Erro = transfer.Erro;
-                if (transfer.Mensagens != null) {
-                    this.Mensagens = new List<string>(transfer.Mensagens);
+            if (pTransfer != null) {
+                this.Validacao = pTransfer.Validacao;
+                this.Erro = pTransfer.Erro;
+                if (pTransfer.Mensagens != null) {
+                    this.Mensagens = new List<string>(pTransfer.Mensagens);
                 }
-                if (transfer.Filtro != null) {
-                    this.Filtro = new TransferFiltro(transfer.Filtro);
+                if (pTransfer.Filtro != null) {
+                    this.Filtro = new TransferFiltro(pTransfer.Filtro);
                 }
-                if (transfer.Paginacao != null) {
-                    this.Paginacao = new TransferPaginacao(transfer.Paginacao);
+                if (pTransfer.Paginacao != null) {
+                    this.Paginacao = new TransferPaginacao(pTransfer.Paginacao);
                 }
             }
         }
 
-        public void IncluirMensagem(string mensagem)
+        public void IncluirMensagem(string pMensagem)
         {
-            if (!string.IsNullOrEmpty(mensagem)) {
+            if (!string.IsNullOrEmpty(pMensagem)) {
                 if (this.Mensagens == null) {
                     this.Mensagens = new List<string>();
                 }
 
-                this.Mensagens.Add(mensagem);
+                this.Mensagens.Add(pMensagem);
             }
         }
     }

@@ -12,23 +12,23 @@ namespace rcLogEntities
         {
         }
 
-        public SistemaEntity(int id, string nome, string descricao, string codigo, bool ativo)
+        public SistemaEntity(int pIid, string pNome, string pDescricao, string pCodigo, bool pAtivo)
         {
-            this.Id = id;
-            this.Nome = nome;
-            this.Descricao = descricao;
-            this.Codigo = codigo;
-            this.Ativo = ativo;
+            this.Id = pIid;
+            this.Nome = pNome;
+            this.Descricao = pDescricao;
+            this.Codigo = pCodigo;
+            this.Ativo = pAtivo;
         }
 
-        public SistemaEntity(SistemaEntity sistema)
+        public SistemaEntity(SistemaEntity pSistema)
         {
-            if (sistema != null) {
-                this.Id = sistema.Id;
-                this.Nome = sistema.Nome;
-                this.Descricao = sistema.Descricao;
-                this.Codigo = sistema.Codigo;
-                this.Ativo = sistema.Ativo;
+            if (pSistema != null) {
+                this.Id = pSistema.Id;
+                this.Nome = pSistema.Nome;
+                this.Descricao = pSistema.Descricao;
+                this.Codigo = pSistema.Codigo;
+                this.Ativo = pSistema.Ativo;
             }
         }
     }

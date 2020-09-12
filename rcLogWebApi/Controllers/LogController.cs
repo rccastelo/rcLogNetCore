@@ -11,7 +11,7 @@ namespace rcLogWebApi.Controllers
     public class LogController : ControllerBase
     {
         [HttpGet("{id}")]
-        public IActionResult ConsultarPorId(int id)
+        public IActionResult ConsultarPorId(int pId)
         {
             LogModel logModel;
             LogTransfer log;
@@ -19,8 +19,8 @@ namespace rcLogWebApi.Controllers
             try {
                 logModel = new LogModel();
 
-                if (id > 0) {
-                    log = logModel.ConsultarPorId(id);
+                if (pId > 0) {
+                    log = logModel.ConsultarPorId(pId);
                 } else {
                     log = null;
                 }
@@ -73,7 +73,7 @@ namespace rcLogWebApi.Controllers
         }
 
         [HttpPost("lista")]
-        public IActionResult Consultar(LogTransfer sistemaTransfer)
+        public IActionResult Consultar(LogTransfer pSistema)
         {
             LogModel logModel;
             LogTransfer logLista;
@@ -81,7 +81,7 @@ namespace rcLogWebApi.Controllers
             try {
                 logModel = new LogModel();
 
-                logLista = logModel.Consultar(sistemaTransfer);
+                logLista = logModel.Consultar(pSistema);
             } catch (Exception ex) {
                 logLista = new LogTransfer();
 
@@ -102,7 +102,7 @@ namespace rcLogWebApi.Controllers
         }
 
         [HttpPost]
-        public IActionResult Incluir(LogTransfer sistemaTransfer)
+        public IActionResult Incluir(LogTransfer pSistema)
         {
             LogModel logModel;
             LogTransfer log;
@@ -110,7 +110,7 @@ namespace rcLogWebApi.Controllers
             try {
                 logModel = new LogModel();
 
-                log = logModel.Incluir(sistemaTransfer);
+                log = logModel.Incluir(pSistema);
             } catch (Exception ex) {
                 log = new LogTransfer();
 
@@ -133,7 +133,7 @@ namespace rcLogWebApi.Controllers
         }
 
         [HttpPut]
-        public IActionResult Alterar(LogTransfer sistemaTransfer)
+        public IActionResult Alterar(LogTransfer pSistema)
         {
             LogModel logModel;
             LogTransfer log;
@@ -141,7 +141,7 @@ namespace rcLogWebApi.Controllers
             try {
                 logModel = new LogModel();
 
-                log = logModel.Alterar(sistemaTransfer);
+                log = logModel.Alterar(pSistema);
             } catch (Exception ex) {
                 log = new LogTransfer();
 
@@ -162,7 +162,7 @@ namespace rcLogWebApi.Controllers
         }
 
         [HttpDelete("{id}")]
-        public IActionResult Excluir(int id)
+        public IActionResult Excluir(int pId)
         {
             LogModel logModel;
             LogTransfer log;
@@ -170,7 +170,7 @@ namespace rcLogWebApi.Controllers
             try {
                 logModel = new LogModel();
 
-                log = logModel.Excluir(id);
+                log = logModel.Excluir(pId);
             } catch (Exception ex) {
                 log = new LogTransfer();
 

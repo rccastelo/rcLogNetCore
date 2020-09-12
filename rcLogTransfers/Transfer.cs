@@ -16,25 +16,25 @@ namespace rcLogTransfers
             this.Erro = false;
         }
 
-        public Transfer(Transfer transfer)
+        public Transfer(Transfer pTransfer)
         {
-            if (transfer != null) {
-                this.Validacao = transfer.Validacao;
-                this.Erro = transfer.Erro;
-                if (transfer.Mensagens != null) {
-                    this.Mensagens = new List<string>(transfer.Mensagens);
+            if (pTransfer != null) {
+                this.Validacao = pTransfer.Validacao;
+                this.Erro = pTransfer.Erro;
+                if (pTransfer.Mensagens != null) {
+                    this.Mensagens = new List<string>(pTransfer.Mensagens);
                 }
             }
         }
 
-        public void IncluirMensagem(string mensagem)
+        public void IncluirMensagem(string pMensagem)
         {
-            if (!string.IsNullOrEmpty(mensagem)) {
+            if (!string.IsNullOrEmpty(pMensagem)) {
                 if (this.Mensagens == null) {
                     this.Mensagens = new List<string>();
                 }
 
-                this.Mensagens.Add(mensagem);
+                this.Mensagens.Add(pMensagem);
             }
         }
     }

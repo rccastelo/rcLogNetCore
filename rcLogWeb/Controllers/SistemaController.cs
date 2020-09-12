@@ -9,8 +9,8 @@ namespace rcLogWeb.Controllers
 {
     public class SistemaController : ControllerLog
     {
-        public SistemaController(IHttpContextAccessor accessor)
-            :base(accessor)
+        public SistemaController(IHttpContextAccessor pAccessor)
+            :base(pAccessor)
         {
         }
 

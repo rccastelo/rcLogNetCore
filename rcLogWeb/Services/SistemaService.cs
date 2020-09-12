@@ -22,14 +22,14 @@ namespace rcLogWeb.Services
             autenticaService = new AutenticaService();
         }
 
-        // public async Task<SistemaTransfer> Incluir(SistemaTransfer sistemaTransfer, string autorizacao)
+        // public async Task<SistemaTransfer> Incluir(SistemaTransfer sistemaTransfer, string pAutorizacao)
         // {
         //     SistemaTransfer sistema = null;
         //     HttpResponseMessage resposta = null;
         //     string mensagemRetono = null;
             
         //     try {
-        //         httpClient.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("Bearer", autorizacao);
+        //         httpClient.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("Bearer", pAutorizacao);
 
         //         resposta = await httpClient.PostAsync($"{nomeServico}", new StringContent(JsonConvert.SerializeObject(sistemaTransfer)));
 
@@ -63,14 +63,14 @@ namespace rcLogWeb.Services
         //     return sistema;
         // }
 
-        // public async Task<SistemaTransfer> Alterar(SistemaTransfer sistemaTransfer, string autorizacao)
+        // public async Task<SistemaTransfer> Alterar(SistemaTransfer sistemaTransfer, string pAutorizacao)
         // {
         //     SistemaTransfer sistema = null;
         //     HttpResponseMessage resposta = null;
         //     string mensagemRetono = null;
             
         //     try {
-        //         httpClient.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("Bearer", autorizacao);
+        //         httpClient.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("Bearer", pAutorizacao);
 
         //         resposta = await httpClient.PutAsync($"{nomeServico}", new StringContent(JsonConvert.SerializeObject(sistemaTransfer)));
 
@@ -104,14 +104,14 @@ namespace rcLogWeb.Services
         //     return sistema;
         // }
 
-        // public async Task<SistemaTransfer> Excluir(int id, string autorizacao)
+        // public async Task<SistemaTransfer> Excluir(int id, string pAutorizacao)
         // {
         //     SistemaTransfer sistema = null;
         //     HttpResponseMessage resposta = null;
         //     string mensagemRetono = null;
             
         //     try {
-        //         httpClient.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("Bearer", autorizacao);
+        //         httpClient.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("Bearer", pAutorizacao);
 
         //         resposta = await httpClient.DeleteAsync($"{nomeServico}/{id}");
 
@@ -145,14 +145,14 @@ namespace rcLogWeb.Services
         //     return sistema;
         // }
 
-        // public async Task<SistemaTransfer> ConsultarPorId(int id, string autorizacao)
+        // public async Task<SistemaTransfer> ConsultarPorId(int id, string pAutorizacao)
         // {
         //     SistemaTransfer sistema = null;
         //     HttpResponseMessage resposta = null;
         //     string mensagemRetono = null;
             
         //     try {
-        //         httpClient.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("Bearer", autorizacao);
+        //         httpClient.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("Bearer", pAutorizacao);
 
         //         resposta = await httpClient.GetAsync($"{nomeServico}/{id}");
 
@@ -186,16 +186,16 @@ namespace rcLogWeb.Services
         //     return sistema;
         // }
 
-        public async Task<SistemaTransfer> Consultar(SistemaTransfer logListaTransfer, string autorizacao)
+        public async Task<SistemaTransfer> Consultar(SistemaTransfer pLogLista, string pAutorizacao)
         {
             SistemaTransfer logLista = null;
             HttpResponseMessage resposta = null;
             string mensagemRetono = null;
             
             try {
-                httpClient.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("Bearer", autorizacao);
+                httpClient.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("Bearer", pAutorizacao);
 
-                resposta = await httpClient.PostAsync($"{nomeServico}/lista", new StringContent(JsonConvert.SerializeObject(logListaTransfer)));
+                resposta = await httpClient.PostAsync($"{nomeServico}/lista", new StringContent(JsonConvert.SerializeObject(pLogLista)));
 
                 if (resposta.IsSuccessStatusCode) {
                     logLista = JsonConvert.DeserializeObject<SistemaTransfer>(resposta.Content.ReadAsStringAsync().Result);

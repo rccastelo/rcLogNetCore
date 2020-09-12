@@ -5,7 +5,7 @@ namespace rcLogWeb
 {
      public class Settings
     {
-        private static string GetSettings(string sectionName, string key) 
+        private static string GetSettings(string pSecao, string pChave) 
         {
             IConfigurationRoot configuration;
             IConfigurationSection section;
@@ -17,14 +17,14 @@ namespace rcLogWeb
             
             configuration = builder.Build();
 
-            section = configuration.GetSection(sectionName);
+            section = configuration.GetSection(pSecao);
 
-            return section.GetValue<string>(key);
+            return section.GetValue<string>(pChave);
         }
 
-        public static string GetSetting(string key)
+        public static string GetSetting(string pChave)
         {
-            return GetSettings("Settings", key);
+            return GetSettings("Settings", pChave);
         }
 
         public static string GetConnectionString()
@@ -32,9 +32,9 @@ namespace rcLogWeb
             return GetSettings("ConnectionStrings", "DefaultConnection");
         }
 
-        public static string GetConnectionString(string key)
+        public static string GetConnectionString(string pChave)
         {
-            return GetSettings("ConnectionStrings", key);
+            return GetSettings("ConnectionStrings", pChave);
         }
     }
 }

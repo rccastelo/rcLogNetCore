@@ -30,27 +30,27 @@ namespace rcLogTransfers
         {
         }
 
-        public SistemaTransfer(SistemaTransfer transfer) 
-            : base(transfer)
+        public SistemaTransfer(SistemaTransfer pTransfer) 
+            : base(pTransfer)
         {
-            if (transfer != null) {
-                if (transfer.Lista != null) {
-                    this.Lista = new List<SistemaEntity>(transfer.Lista);
+            if (pTransfer != null) {
+                if (pTransfer.Lista != null) {
+                    this.Lista = new List<SistemaEntity>(pTransfer.Lista);
                 }
-                if (transfer.Sistema != null) {
-                    this.Sistema = new SistemaEntity(transfer.Sistema);
+                if (pTransfer.Sistema != null) {
+                    this.Sistema = new SistemaEntity(pTransfer.Sistema);
                 }
-                this.Links = transfer.Links;
+                this.Links = pTransfer.Links;
             }
         }
 
-        public void IncluirSistema(SistemaEntity entity) {
-            if (entity != null) {
+        public void IncluirSistema(SistemaEntity pEntity) {
+            if (pEntity != null) {
                 if (this.Lista == null) {
                     this.Lista = new List<SistemaEntity>();
                 }
 
-                this.Lista.Add(entity);
+                this.Lista.Add(pEntity);
             }
         }
         

@@ -10,9 +10,9 @@ namespace rcLogWeb.Models
     {
         private readonly IHttpContextAccessor httpContext;
 
-        public SistemaModel(IHttpContextAccessor accessor)
+        public SistemaModel(IHttpContextAccessor pAccessor)
         {
-            httpContext = accessor;
+            httpContext = pAccessor;
         }
 
         // public async Task<SistemaTransfer> Incluir(SistemaTransfer logTransfer)
@@ -127,7 +127,7 @@ namespace rcLogWeb.Models
         //     return cor;
         // }
 
-        public async Task<SistemaTransfer> Consultar(SistemaTransfer sistemaListaTransfer)
+        public async Task<SistemaTransfer> Consultar(SistemaTransfer pSistemaLista)
         {
             SistemaService sistemaService;
             SistemaTransfer sistemaLista;
@@ -142,7 +142,7 @@ namespace rcLogWeb.Models
 
                 autorizacao = autenticaModel.ObterToken();
 
-                sistemaLista = await sistemaService.Consultar(sistemaListaTransfer, autorizacao);
+                sistemaLista = await sistemaService.Consultar(pSistemaLista, autorizacao);
 
                 if (sistemaLista != null) {
                     if (sistemaLista.Paginacao.TotalRegistros > 0) {

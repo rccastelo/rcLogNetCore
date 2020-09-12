@@ -10,9 +10,9 @@ namespace rcLogWeb.Models
     {
         private readonly IHttpContextAccessor httpContext;
 
-        public LogModel(IHttpContextAccessor accessor)
+        public LogModel(IHttpContextAccessor pAccessor)
         {
-            httpContext = accessor;
+            httpContext = pAccessor;
         }
 
         // public async Task<LogTransfer> Incluir(LogTransfer logTransfer)
@@ -71,7 +71,7 @@ namespace rcLogWeb.Models
         //     return cor;
         // }
 
-        // public async Task<LogTransfer> Excluir(int id)
+        // public async Task<LogTransfer> Excluir(int pId)
         // {
         //     LogService logService;
         //     LogTransfer cor;
@@ -84,7 +84,7 @@ namespace rcLogWeb.Models
 
         //         autorizacao = autenticaModel.ObterToken();
 
-        //         cor = await logService.Excluir(id, autorizacao);
+        //         cor = await logService.Excluir(pId, autorizacao);
         //     } catch (Exception ex) {
         //         cor = new LogTransfer();
 
@@ -99,7 +99,7 @@ namespace rcLogWeb.Models
         //     return cor;
         // }
 
-        public async Task<LogTransfer> ConsultarPorId(int id)
+        public async Task<LogTransfer> ConsultarPorId(int pId)
         {
             LogService logService;
             LogTransfer cor;
@@ -112,7 +112,7 @@ namespace rcLogWeb.Models
 
                 autorizacao = autenticaModel.ObterToken();
 
-                cor = await logService.ConsultarPorId(id, autorizacao);
+                cor = await logService.ConsultarPorId(pId, autorizacao);
             } catch (Exception ex) {
                 cor = new LogTransfer();
 
@@ -127,7 +127,7 @@ namespace rcLogWeb.Models
             return cor;
         }
 
-        public async Task<LogTransfer> Consultar(LogTransfer corListaTransfer)
+        public async Task<LogTransfer> Consultar(LogTransfer pLogLista)
         {
             LogService logService;
             LogTransfer corLista;
@@ -142,7 +142,7 @@ namespace rcLogWeb.Models
 
                 autorizacao = autenticaModel.ObterToken();
 
-                corLista = await logService.Consultar(corListaTransfer, autorizacao);
+                corLista = await logService.Consultar(pLogLista, autorizacao);
 
                 if (corLista != null) {
                     if (corLista.Paginacao.TotalRegistros > 0) {

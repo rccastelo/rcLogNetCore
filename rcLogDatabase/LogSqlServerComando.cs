@@ -9,9 +9,9 @@ namespace rcLogDatabase
         public SqlCommand cmd = null;
         public LogSqlServerDatabase db = null;
 
-        public LogSqlServerComando(LogSqlServerDatabase dbSqlServer)
+        public LogSqlServerComando(LogSqlServerDatabase pDB)
         {
-            this.db = dbSqlServer;
+            this.db = pDB;
 
             CriarComando();
             IncluirTransacao();

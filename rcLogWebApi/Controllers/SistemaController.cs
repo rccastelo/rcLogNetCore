@@ -73,7 +73,7 @@ namespace rcLogWebApi.Controllers
         // }
 
         [HttpPost("lista")]
-        public IActionResult Consultar(SistemaTransfer sistemaTransfer)
+        public IActionResult Consultar(SistemaTransfer pSistema)
         {
             SistemaModel sistemaModel;
             SistemaTransfer sistemaLista;
@@ -81,7 +81,7 @@ namespace rcLogWebApi.Controllers
             try {
                 sistemaModel = new SistemaModel();
 
-                sistemaLista = sistemaModel.Consultar(sistemaTransfer);
+                sistemaLista = sistemaModel.Consultar(pSistema);
             } catch (Exception ex) {
                 sistemaLista = new SistemaTransfer();
 
@@ -102,7 +102,7 @@ namespace rcLogWebApi.Controllers
         }
 
         // [HttpPost]
-        // public IActionResult Incluir(SistemaTransfer sistemaTransfer)
+        // public IActionResult Incluir(SistemaTransfer pSistema)
         // {
         //     SistemaModel sistemaModel;
         //     SistemaTransfer sistema;
@@ -110,7 +110,7 @@ namespace rcLogWebApi.Controllers
         //     try {
         //         sistemaModel = new SistemaModel();
 
-        //         sistema = sistemaModel.Incluir(sistemaTransfer);
+        //         sistema = sistemaModel.Incluir(pSistema);
         //     } catch (Exception ex) {
         //         sistema = new SistemaTransfer();
 
@@ -133,7 +133,7 @@ namespace rcLogWebApi.Controllers
         // }
 
         // [HttpPut]
-        // public IActionResult Alterar(SistemaTransfer sistemaTransfer)
+        // public IActionResult Alterar(SistemaTransfer pSistema)
         // {
         //     SistemaModel sistemaModel;
         //     SistemaTransfer sistema;
@@ -141,7 +141,7 @@ namespace rcLogWebApi.Controllers
         //     try {
         //         sistemaModel = new SistemaModel();
 
-        //         sistema = sistemaModel.Alterar(sistemaTransfer);
+        //         sistema = sistemaModel.Alterar(pSistema);
         //     } catch (Exception ex) {
         //         sistema = new SistemaTransfer();
 

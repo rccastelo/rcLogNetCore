@@ -18,15 +18,15 @@ namespace rcLogTransfers
         {
         }
 
-        public TransferPaginacao(TransferPaginacao transfer)
+        public TransferPaginacao(TransferPaginacao pTransfer)
         {
-            if (transfer != null) {
-                this.PaginaAtual = transfer.PaginaAtual;
-                this.PaginaInicial = transfer.PaginaInicial;
-                this.PaginaFinal = transfer.PaginaFinal;
-                this.RegistrosPorPagina = transfer.RegistrosPorPagina;
-                this.TotalRegistros = transfer.TotalRegistros;
-                this.TotalPaginas = transfer.TotalPaginas;
+            if (pTransfer != null) {
+                this.PaginaAtual = pTransfer.PaginaAtual;
+                this.PaginaInicial = pTransfer.PaginaInicial;
+                this.PaginaFinal = pTransfer.PaginaFinal;
+                this.RegistrosPorPagina = pTransfer.RegistrosPorPagina;
+                this.TotalRegistros = pTransfer.TotalRegistros;
+                this.TotalPaginas = pTransfer.TotalPaginas;
             }
         }
     }

@@ -6,7 +6,7 @@ namespace rcLogWebApi.Models
 {
     public class LogModel
     {
-        public LogTransfer Incluir(LogTransfer logTransfer)
+        public LogTransfer Incluir(LogTransfer pLog)
         {
             // LogDataModel logDataModel;
             LogTransfer logValidacao;
@@ -16,7 +16,7 @@ namespace rcLogWebApi.Models
                 // logBusiness = new LogBusiness();
                 // logDataModel = new LogDataModel();
 
-                // logValidacao = logBusiness.Validar(logTransfer);
+                // logValidacao = logBusiness.Validar(pLog);
                 logValidacao = new LogTransfer();
 
                 if (!logValidacao.Erro) {
@@ -44,7 +44,7 @@ namespace rcLogWebApi.Models
             return logInclusao;
         }
 
-        public LogTransfer Alterar(LogTransfer logTransfer)
+        public LogTransfer Alterar(LogTransfer pLog)
         {
             // LogDataModel logDataModel;
             // LogBusiness logBusiness;
@@ -55,7 +55,7 @@ namespace rcLogWebApi.Models
                 // logBusiness = new LogBusiness();
                 // logDataModel = new LogDataModel();
 
-                // logValidacao = logBusiness.Validar(logTransfer);
+                // logValidacao = logBusiness.Validar(pLog);
                 logValidacao = new LogTransfer();
 
                 if (!logValidacao.Erro) {
@@ -83,7 +83,7 @@ namespace rcLogWebApi.Models
             return logAlteracao;
         }
 
-        public LogTransfer Excluir(int id)
+        public LogTransfer Excluir(int pId)
         {
             // LogDataModel logDataModel;
             LogTransfer log;
@@ -91,7 +91,7 @@ namespace rcLogWebApi.Models
             try {
                 // logDataModel = new LogDataModel();
 
-                // log = logDataModel.Excluir(id);
+                // log = logDataModel.Excluir(pId);
                 log = new LogTransfer();
             } catch (Exception ex) {
                 log = new LogTransfer();
@@ -106,7 +106,7 @@ namespace rcLogWebApi.Models
             return log;
         }
 
-        public LogTransfer ConsultarPorId(int id)
+        public LogTransfer ConsultarPorId(int pId)
         {
             // LogDataModel logDataModel;
             LogTransfer log;
@@ -114,7 +114,7 @@ namespace rcLogWebApi.Models
             try {
                 // logDataModel = new LogDataModel();
 
-                // log = logDataModel.ConsultarPorId(id);
+                // log = logDataModel.ConsultarPorId(pId);
                 log = new LogTransfer();
             } catch (Exception ex) {
                 log = new LogTransfer();
@@ -129,7 +129,7 @@ namespace rcLogWebApi.Models
             return log;
         }
 
-        public LogTransfer Consultar(LogTransfer logListaTransfer)
+        public LogTransfer Consultar(LogTransfer pLogLista)
         {
             // LogDataModel logDataModel;
             // LogBusiness logBusiness;
@@ -140,7 +140,7 @@ namespace rcLogWebApi.Models
                 // logBusiness = new LogBusiness();
                 // logDataModel = new LogDataModel();
 
-                // logValidacao = logBusiness.ValidarConsulta(logListaTransfer);
+                // logValidacao = logBusiness.ValidarConsulta(pLogLista);
                 logValidacao = new LogTransfer();
 
                 if (!logValidacao.Erro) {
@@ -155,7 +155,7 @@ namespace rcLogWebApi.Models
                                 } else if (logLista.Paginacao.RegistrosPorPagina > 200) {
                                     logLista.Paginacao.RegistrosPorPagina = 30;
                                 }
-                                logLista.Paginacao.PaginaAtual = (logListaTransfer.Paginacao.PaginaAtual < 1 ? 1 : logListaTransfer.Paginacao.PaginaAtual);
+                                logLista.Paginacao.PaginaAtual = (pLogLista.Paginacao.PaginaAtual < 1 ? 1 : pLogLista.Paginacao.PaginaAtual);
                                 logLista.Paginacao.TotalPaginas = 
                                     Convert.ToInt32(Math.Ceiling(Convert.ToDecimal(logLista.Paginacao.TotalRegistros) 
                                     / @Convert.ToDecimal(logLista.Paginacao.RegistrosPorPagina)));

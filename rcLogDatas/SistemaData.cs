@@ -7,7 +7,7 @@ namespace rcLogDatas
 {
     public class SistemaData : Data
     {
-        public SistemaData(LogDatabase db) : base(db)
+        public SistemaData(LogDatabase pDB) : base(pDB)
         {
         }
 

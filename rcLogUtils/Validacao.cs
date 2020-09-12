@@ -29,64 +29,64 @@ namespace rcLogUtils
         //-- T = traços = sublinhado e hífen (_\-)
         static string tra = @"_\-";
 
-        public static bool ValidarCharAaBCcNT(string valor) {
-            if (Regex.IsMatch(valor, $"^[{num}{mai}{min}{ami}{ama}{tra}{bra}]*$")) {
+        public static bool ValidarCharAaBCcNT(string pValor) {
+            if (Regex.IsMatch(pValor, $"^[{num}{mai}{min}{ami}{ama}{tra}{bra}]*$")) {
                 return true;
             } else {
                 return false;
             }
         }
 
-        public static bool ValidarCharAaNT(string valor) {
-            if (Regex.IsMatch(valor, $"^[{num}{mai}{min}{tra}]*$")) {
+        public static bool ValidarCharAaNT(string pValor) {
+            if (Regex.IsMatch(pValor, $"^[{num}{mai}{min}{tra}]*$")) {
                 return true;
             } else {
                 return false;
             }
         }
 
-        public static bool ValidarCharAaBCc(string valor) {
-            if (Regex.IsMatch(valor, $"^[{mai}{min}{ami}{ama}{bra}]*$")) {
+        public static bool ValidarCharAaBCc(string pValor) {
+            if (Regex.IsMatch(pValor, $"^[{mai}{min}{ami}{ama}{bra}]*$")) {
                 return true;
             } else {
                 return false;
             }
         }
 
-        public static bool ValidarCharAaBEN(string valor) {
-            if (Regex.IsMatch(valor, $"^[{num}{mai}{min}{bra}{esp}]*$")) {
+        public static bool ValidarCharAaBEN(string pValor) {
+            if (Regex.IsMatch(pValor, $"^[{num}{mai}{min}{bra}{esp}]*$")) {
                 return true;
             } else {
                 return false;
             }
         }
 
-        public static bool ValidarCharAaB(string valor) {
-            if (Regex.IsMatch(valor, $"^[{mai}{min}{bra}]*$")) {
+        public static bool ValidarCharAaB(string pValor) {
+            if (Regex.IsMatch(pValor, $"^[{mai}{min}{bra}]*$")) {
                 return true;
             } else {
                 return false;
             }
         }
 
-        public static bool ValidarCharAaBN(string valor) {
-            if (Regex.IsMatch(valor, $"^[{num}{mai}{min}{bra}]*$")) {
+        public static bool ValidarCharAaBN(string pValor) {
+            if (Regex.IsMatch(pValor, $"^[{num}{mai}{min}{bra}]*$")) {
                 return true;
             } else {
                 return false;
             }
         }
 
-        public static bool ValidarCharAaN(string valor) {
-            if (Regex.IsMatch(valor, $"^[{num}{mai}{min}]+$")) {
+        public static bool ValidarCharAaN(string pValor) {
+            if (Regex.IsMatch(pValor, $"^[{num}{mai}{min}]+$")) {
                 return true;
             } else {
                 return false;
             }
         }
 
-        public static bool ValidarBrancoIniFim(string valor) {
-            if (valor.StartsWith(" ") || valor.EndsWith(" ")) {
+        public static bool ValidarBrancoIniFim(string pValor) {
+            if (pValor.StartsWith(" ") || pValor.EndsWith(" ")) {
                 return false;
             } else {
                 return true;

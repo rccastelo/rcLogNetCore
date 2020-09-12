@@ -20,7 +20,7 @@ namespace rcLogWeb.Services
             httpClient.BaseAddress = new System.Uri(enderecoServico);
         }
         
-        public async Task<AutenticaTransfer> Autenticar(AutenticaTransfer autenticaTransfer)
+        public async Task<AutenticaTransfer> Autenticar(AutenticaTransfer pAutentica)
         {
             HttpResponseMessage resposta = null;
             AutenticaTransfer autentica = null;
@@ -28,7 +28,7 @@ namespace rcLogWeb.Services
             
             try {
                 resposta = await httpClient.PostAsync($"{nomeServico}", 
-                    new StringContent(JsonConvert.SerializeObject(autenticaTransfer), Encoding.UTF8, "application/json" ));
+                    new StringContent(JsonConvert.SerializeObject(pAutentica), Encoding.UTF8, "application/json" ));
 
                 if (resposta.IsSuccessStatusCode) {
                     autentica = JsonConvert.DeserializeObject<AutenticaTransfer>(resposta.Content.ReadAsStringAsync().Result);

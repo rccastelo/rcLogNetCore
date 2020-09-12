@@ -10,8 +10,8 @@ namespace rcLogWeb.Controllers
 {
     public class HomeController : ControllerLog
     {
-        public HomeController(IHttpContextAccessor accessor)
-            :base(accessor)
+        public HomeController(IHttpContextAccessor pAccessor)
+            :base(pAccessor)
         {
         }
 
@@ -30,7 +30,7 @@ namespace rcLogWeb.Controllers
         }
 
         [HttpPost]
-        public async Task<IActionResult> Entrar(AutenticaTransfer autenticaTransfer)
+        public async Task<IActionResult> Entrar(AutenticaTransfer pAutentica)
         {
             AutenticaModel autenticaModel;
             AutenticaTransfer autentica;
@@ -38,7 +38,7 @@ namespace rcLogWeb.Controllers
             try {
                 autenticaModel = new AutenticaModel(httpContext);
 
-                autentica = await autenticaModel.Autenticar(autenticaTransfer);
+                autentica = await autenticaModel.Autenticar(pAutentica);
             } catch (Exception ex) {
                 autentica = new AutenticaTransfer();
 
