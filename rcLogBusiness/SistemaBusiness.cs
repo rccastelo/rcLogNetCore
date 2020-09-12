@@ -6,12 +6,12 @@ namespace rcLogBusiness
 {
     public class SistemaBusiness
     {
-        public SistemaTransfer Validar(SistemaTransfer sistemaTransfer) 
+        public SistemaTransfer Validar(SistemaTransfer pSistema) 
         {
             SistemaTransfer sistemaValidacao;
 
             try  {
-                sistemaValidacao = new SistemaTransfer(sistemaTransfer);
+                sistemaValidacao = new SistemaTransfer(pSistema);
 
                 //-- Descrição de Cor
                 if (string.IsNullOrEmpty(sistemaValidacao.Sistema.Descricao)) {
@@ -57,12 +57,12 @@ namespace rcLogBusiness
             return sistemaValidacao;
         }
 
-        public SistemaTransfer ValidarConsulta(SistemaTransfer sistemaTransfer) 
+        public SistemaTransfer ValidarConsulta(SistemaTransfer pSistema) 
         {
             SistemaTransfer sistemaValidacao;
 
             try  {
-                sistemaValidacao = new SistemaTransfer(sistemaTransfer);
+                sistemaValidacao = new SistemaTransfer(pSistema);
 
                 if (sistemaValidacao != null) {
 

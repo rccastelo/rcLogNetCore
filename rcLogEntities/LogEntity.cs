@@ -21,42 +21,42 @@ namespace rcLogEntities
         {
         }
 
-        public LogEntity(int id, int data, int hora, string chave, string ip, int sistema, string modulo, 
-            string arquivo, int tipo, string descricao, string mensagem, string pilha, string origem, bool critico)
+        public LogEntity(int pId, int pData, int pHora, string pChave, string pIp, int pSistema, string pModulo, 
+            string pArquivo, int pTipo, string pDescricao, string pMensagem, string pPilha, string pOrigem, bool pCritico)
         {
-            this.Id = id;
-            this.Data = data;
-            this.Hora = hora;
-            this.Chave = chave;
-            this.Ip = ip;
-            this.Sistema = sistema;
-            this.Modulo = modulo;
-            this.Arquivo = arquivo;
-            this.Tipo = tipo;
-            this.Descricao = descricao;
-            this.Mensagem = mensagem;
-            this.Pilha = pilha;
-            this.Origem = origem;
-            this.Critico = critico;
+            this.Id = pId;
+            this.Data = pData;
+            this.Hora = pHora;
+            this.Chave = pChave;
+            this.Ip = pIp;
+            this.Sistema = pSistema;
+            this.Modulo = pModulo;
+            this.Arquivo = pArquivo;
+            this.Tipo = pTipo;
+            this.Descricao = pDescricao;
+            this.Mensagem = pMensagem;
+            this.Pilha = pPilha;
+            this.Origem = pOrigem;
+            this.Critico = pCritico;
         }
 
-        public LogEntity(LogEntity sistema)
+        public LogEntity(LogEntity pSistema)
         {
-            if (sistema != null) {
-                this.Id = sistema.Id;
-                this.Data = sistema.Data;
-                this.Hora = sistema.Hora;
-                this.Chave = sistema.Chave;
-                this.Ip = sistema.Ip;
-                this.Sistema = sistema.Sistema;
-                this.Modulo = sistema.Modulo;
-                this.Arquivo = sistema.Arquivo;
-                this.Tipo = sistema.Tipo;
-                this.Descricao = sistema.Descricao;
-                this.Mensagem = sistema.Mensagem;
-                this.Pilha = sistema.Pilha;
-                this.Origem = sistema.Origem;
-                this.Critico = sistema.Critico;
+            if (pSistema != null) {
+                this.Id = pSistema.Id;
+                this.Data = pSistema.Data;
+                this.Hora = pSistema.Hora;
+                this.Chave = pSistema.Chave;
+                this.Ip = pSistema.Ip;
+                this.Sistema = pSistema.Sistema;
+                this.Modulo = pSistema.Modulo;
+                this.Arquivo = pSistema.Arquivo;
+                this.Tipo = pSistema.Tipo;
+                this.Descricao = pSistema.Descricao;
+                this.Mensagem = pSistema.Mensagem;
+                this.Pilha = pSistema.Pilha;
+                this.Origem = pSistema.Origem;
+                this.Critico = pSistema.Critico;
             }
         }
     }

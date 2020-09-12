@@ -6,7 +6,7 @@ namespace rcLogWebApi.Models
 {
     public class SistemaModel
     {
-        public SistemaTransfer Incluir(SistemaTransfer sistemaTransfer)
+        public SistemaTransfer Incluir(SistemaTransfer pSistema)
         {
             SistemaDataModel sistemaDataModel;
             SistemaTransfer sistemaValidacao;
@@ -16,7 +16,7 @@ namespace rcLogWebApi.Models
                 // sistemaBusiness = new SistemaBusiness();
                 sistemaDataModel = new SistemaDataModel();
 
-                // sistemaValidacao = sistemaBusiness.Validar(sistemaTransfer);
+                // sistemaValidacao = sistemaBusiness.Validar(pSistema);
                 sistemaValidacao = new SistemaTransfer();
 
                 if (!sistemaValidacao.Erro) {
@@ -44,7 +44,7 @@ namespace rcLogWebApi.Models
             return sistemaInclusao;
         }
 
-        public SistemaTransfer Alterar(SistemaTransfer sistemaTransfer)
+        public SistemaTransfer Alterar(SistemaTransfer pSistema)
         {
             // SistemaDataModel sistemaDataModel;
             // SistemaBusiness sistemaBusiness;
@@ -55,7 +55,7 @@ namespace rcLogWebApi.Models
                 // sistemaBusiness = new SistemaBusiness();
                 // sistemaDataModel = new SistemaDataModel();
 
-                // sistemaValidacao = sistemaBusiness.Validar(sistemaTransfer);
+                // sistemaValidacao = sistemaBusiness.Validar(pSistema);
                 sistemaValidacao = new SistemaTransfer();
 
                 if (!sistemaValidacao.Erro) {
@@ -83,7 +83,7 @@ namespace rcLogWebApi.Models
             return sistemaAlteracao;
         }
 
-        public SistemaTransfer Excluir(int id)
+        public SistemaTransfer Excluir(int pId)
         {
             // SistemaDataModel sistemaDataModel;
             SistemaTransfer sistema;
@@ -91,7 +91,7 @@ namespace rcLogWebApi.Models
             try {
                 // sistemaDataModel = new SistemaDataModel();
 
-                // sistema = sistemaDataModel.Excluir(id);
+                // sistema = sistemaDataModel.Excluir(pId);
                 sistema = new SistemaTransfer();
             } catch (Exception ex) {
                 sistema = new SistemaTransfer();
@@ -106,7 +106,7 @@ namespace rcLogWebApi.Models
             return sistema;
         }
 
-        public SistemaTransfer ConsultarPorId(int id)
+        public SistemaTransfer ConsultarPorId(int pId)
         {
             // SistemaDataModel sistemaDataModel;
             SistemaTransfer sistema;
@@ -114,7 +114,7 @@ namespace rcLogWebApi.Models
             try {
                 // sistemaDataModel = new SistemaDataModel();
 
-                // sistema = sistemaDataModel.ConsultarPorId(id);
+                // sistema = sistemaDataModel.ConsultarPorId(pId);
                 sistema = new SistemaTransfer();
             } catch (Exception ex) {
                 sistema = new SistemaTransfer();
@@ -129,7 +129,7 @@ namespace rcLogWebApi.Models
             return sistema;
         }
 
-        public SistemaTransfer Consultar(SistemaTransfer sistemaListaTransfer)
+        public SistemaTransfer Consultar(SistemaTransfer pSistemaLista)
         {
             SistemaDataModel sistemaDataModel;
             // SistemaBusiness sistemaBusiness;
@@ -140,7 +140,7 @@ namespace rcLogWebApi.Models
                 // sistemaBusiness = new SistemaBusiness();
                 sistemaDataModel = new SistemaDataModel();
 
-                // sistemaValidacao = sistemaBusiness.ValidarConsulta(sistemaListaTransfer);
+                // sistemaValidacao = sistemaBusiness.ValidarConsulta(pSistemaLista);
                 sistemaValidacao = new SistemaTransfer();
 
                 if (!sistemaValidacao.Erro) {
@@ -155,7 +155,7 @@ namespace rcLogWebApi.Models
                                 } else if (sistemaLista.Paginacao.RegistrosPorPagina > 200) {
                                     sistemaLista.Paginacao.RegistrosPorPagina = 30;
                                 }
-                                sistemaLista.Paginacao.PaginaAtual = (sistemaListaTransfer.Paginacao.PaginaAtual < 1 ? 1 : sistemaListaTransfer.Paginacao.PaginaAtual);
+                                sistemaLista.Paginacao.PaginaAtual = (pSistemaLista.Paginacao.PaginaAtual < 1 ? 1 : pSistemaLista.Paginacao.PaginaAtual);
                                 sistemaLista.Paginacao.TotalPaginas = 
                                     Convert.ToInt32(Math.Ceiling(Convert.ToDecimal(sistemaLista.Paginacao.TotalRegistros) 
                                     / @Convert.ToDecimal(sistemaLista.Paginacao.RegistrosPorPagina)));

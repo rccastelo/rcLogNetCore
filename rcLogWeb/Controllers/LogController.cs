@@ -8,8 +8,8 @@ namespace rcLogWeb.Controllers
 {
     public class LogController : ControllerLog
     {
-        public LogController(IHttpContextAccessor accessor)
-            :base(accessor)
+        public LogController(IHttpContextAccessor pAccessor)
+            :base(pAccessor)
         {
         }
 

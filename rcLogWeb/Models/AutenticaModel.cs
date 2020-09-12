@@ -15,12 +15,12 @@ namespace rcLogWeb.Models
 
         private readonly IHttpContextAccessor httpContext;
 
-        public AutenticaModel(IHttpContextAccessor accessor)
+        public AutenticaModel(IHttpContextAccessor pAccessor)
         {
-            httpContext = accessor;
+            httpContext = pAccessor;
         }
 
-         public async Task<AutenticaTransfer> Autenticar(AutenticaTransfer autenticaTransfer)
+         public async Task<AutenticaTransfer> Autenticar(AutenticaTransfer pAutentica)
         {
             AutenticaService autenticaService;
             AutenticaTransfer autentica;
@@ -28,7 +28,7 @@ namespace rcLogWeb.Models
             try {
                 autenticaService = new AutenticaService();
 
-                autentica = await autenticaService.Autenticar(autenticaTransfer);
+                autentica = await autenticaService.Autenticar(pAutentica);
 
                 if (autentica != null) {
                     if ((autentica.Autenticado) && (!string.IsNullOrEmpty(autentica.Token))) {

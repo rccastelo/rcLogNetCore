@@ -6,9 +6,9 @@ namespace rcLogDatas
     {
         protected LogDatabase db;
 
-        public Data(LogDatabase dbDataModel) 
+        public Data(LogDatabase pDB) 
         {
-            this.db = dbDataModel;
+            this.db = pDB;
         }
     }
 }

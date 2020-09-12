@@ -7,14 +7,14 @@ namespace rcLogDataModels
 {
     public class SistemaDataModel : DataModel
     {
-        // public SistemaTransfer Incluir(SistemaTransfer sistemaTransfer)
+        // public SistemaTransfer Incluir(SistemaTransfer pSistema)
         // {
         //     SistemaData sistemaData;
         //     SistemaTransfer sistema;
 
         //     try {
         //         sistemaData = new SistemaData(db);
-        //         sistema = new SistemaTransfer(sistemaTransfer);
+        //         sistema = new SistemaTransfer(pSistema);
 
         //         sistemaData.Incluir(sistema);
 
@@ -33,7 +33,7 @@ namespace rcLogDataModels
         //     return sistema;
         // }
 
-        // public SistemaTransfer Alterar(SistemaTransfer sistemaTransfer)
+        // public SistemaTransfer Alterar(SistemaTransfer pSistema)
         // {
         //     SistemaData sistemaData;
         //     SistemaTransfer sistema;
@@ -42,11 +42,11 @@ namespace rcLogDataModels
         //         sistemaData = new SistemaData(_contexto);
         //         sistema = new SistemaTransfer();
 
-        //         sistemaData.Alterar(sistemaTransfer.Cor);
+        //         sistemaData.Alterar(pSistema.Cor);
 
         //         _contexto.SaveChanges();
 
-        //         sistema.Cor = new CorEntity(sistemaTransfer.Cor);
+        //         sistema.Cor = new CorEntity(pSistema.Cor);
         //         sistema.Validacao = true;
         //         sistema.Erro = false;
         //     } catch (Exception ex) {
@@ -116,7 +116,7 @@ namespace rcLogDataModels
         //     return sistema;
         // }
 
-        public SistemaTransfer Consultar(SistemaTransfer sistemaTransfer)
+        public SistemaTransfer Consultar(SistemaTransfer pSistema)
         {
             SistemaData sistemaData;
             SistemaTransfer ret;
@@ -124,7 +124,7 @@ namespace rcLogDataModels
             try {
                 sistemaData = new SistemaData(db);
 
-                ret = sistemaData.Consultar(sistemaTransfer);
+                ret = sistemaData.Consultar(pSistema);
 
                 db.ConfirmarTransacao();
             } catch (Exception ex) {

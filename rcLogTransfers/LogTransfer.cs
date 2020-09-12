@@ -30,27 +30,27 @@ namespace rcLogTransfers
         {
         }
 
-        public LogTransfer(LogTransfer transfer) 
-            : base(transfer)
+        public LogTransfer(LogTransfer pTransfer) 
+            : base(pTransfer)
         {
-            if (transfer != null) {
-                if (transfer.Lista != null) {
-                    this.Lista = new List<LogEntity>(transfer.Lista);
+            if (pTransfer != null) {
+                if (pTransfer.Lista != null) {
+                    this.Lista = new List<LogEntity>(pTransfer.Lista);
                 }
-                if (transfer.Log != null) {
-                    this.Log = new LogEntity(transfer.Log);
+                if (pTransfer.Log != null) {
+                    this.Log = new LogEntity(pTransfer.Log);
                 }
-                this.Links = transfer.Links;
+                this.Links = pTransfer.Links;
             }
         }
 
-        public void IncluirLog(LogEntity entity) {
-            if (entity != null) {
+        public void IncluirLog(LogEntity pEntity) {
+            if (pEntity != null) {
                 if (this.Lista == null) {
                     this.Lista = new List<LogEntity>();
                 }
 
-                this.Lista.Add(entity);
+                this.Lista.Add(pEntity);
             }
         }
         

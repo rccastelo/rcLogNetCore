@@ -11,9 +11,9 @@ namespace rcLogWeb.Controllers
 
         protected string UsuarioNome;
 
-        protected ControllerLog(IHttpContextAccessor accessor)
+        protected ControllerLog(IHttpContextAccessor pAccessor)
         {
-            httpContext = accessor;
+            httpContext = pAccessor;
 
             UsuarioNome = "";
 
