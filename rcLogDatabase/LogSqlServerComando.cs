@@ -1,4 +1,5 @@
 using System.Data;
+using System.Data.Common;
 using System.Data.SqlClient;
 
 namespace rcLogDatabase
@@ -24,6 +25,7 @@ namespace rcLogDatabase
 
         private void IncluirTransacao()
         {
+            this.cmd.Connection = db.con;
             this.cmd.Transaction = db.tran;
         }
 
@@ -57,7 +59,68 @@ namespace rcLogDatabase
 
         public int? ExecutarComando()
         {
-            throw new System.NotImplementedException();
+            int? retorno;
+
+            this.cmd.CommandType = CommandType.Text;
+
+            retorno = this.cmd.ExecuteNonQuery();
+
+            return retorno;
+        }
+
+        public object ExecutarComandoObjeto()
+        {
+            object retorno;
+
+            this.cmd.CommandType = CommandType.Text;
+
+            retorno = this.cmd.ExecuteScalar();
+
+            return retorno;
+        }
+
+        public DbDataReader ExecutarComandoLista()
+        {
+            SqlDataReader retorno;
+
+            this.cmd.CommandType = CommandType.Text;
+
+            retorno = this.cmd.ExecuteReader();
+
+            return retorno;
+        }
+
+        public int? ExecutarProcedimento()
+        {
+            int? retorno = null;
+
+            this.cmd.CommandType = CommandType.StoredProcedure;
+
+            retorno = this.cmd.ExecuteNonQuery();
+
+            return retorno;
+        }
+
+        public object ExecutarProcedimentoObjeto()
+        {
+            object retorno = null;
+
+            this.cmd.CommandType = CommandType.StoredProcedure;
+
+            retorno = this.cmd.ExecuteScalar();
+
+            return retorno;
+        }
+
+        public DbDataReader ExecutarProcedimentoLista()
+        {
+            SqlDataReader retorno = null;
+
+            this.cmd.CommandType = CommandType.StoredProcedure;
+
+            retorno = this.cmd.ExecuteReader();
+
+            return retorno;
         }
     }
 }

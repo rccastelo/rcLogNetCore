@@ -1,4 +1,5 @@
 using System.Data;
+using System.Data.Common;
 
 namespace rcLogDatabase
 {
@@ -13,5 +14,15 @@ namespace rcLogDatabase
         void Tempo(int pTempoConexao);
 
         int? ExecutarComando();
+
+        object ExecutarComandoObjeto();
+
+        DbDataReader ExecutarComandoLista();
+
+        int? ExecutarProcedimento();
+
+        object ExecutarProcedimentoObjeto();
+
+        DbDataReader ExecutarProcedimentoLista();
     }
 }

@@ -1,5 +1,6 @@
 using System;
 using System.Data;
+using System.Data.Common;
 
 namespace rcLogDatabase
 {
@@ -80,7 +81,32 @@ namespace rcLogDatabase
 
         public int? ExecutarComando()
         {
-            return cmd.ExecutarComando();
+            return this.cmd.ExecutarComando();
+        }
+
+        public object ExecutarComandoObjeto()
+        {
+            return this.cmd.ExecutarComandoObjeto();
+        }
+
+        public DbDataReader ExecutarComandoLista()
+        {
+            return this.cmd.ExecutarComandoLista();
+        }
+
+        public int? ExecutarProcedimento()
+        {
+            return this.cmd.ExecutarProcedimento();
+        }
+
+        public object ExecutarProcedimentoObjeto()
+        {
+            return this.cmd.ExecutarProcedimentoObjeto();
+        }
+
+        public DbDataReader ExecutarProcedimentoLista()
+        {
+            return this.cmd.ExecutarProcedimentoLista();
         }
     }
 }

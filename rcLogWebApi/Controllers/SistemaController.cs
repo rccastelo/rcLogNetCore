@@ -6,71 +6,71 @@ using rcLogTransfers;
 
 namespace rcLogWebApi.Controllers
 {
-    [Authorize]
+    // [Authorize]
     [Route("[controller]")]
     public class SistemaController : ControllerBase
     {
-        [HttpGet("{id}")]
-        public IActionResult ConsultarPorId(int id)
-        {
-            SistemaModel sistemaModel;
-            SistemaTransfer sistema;
+        // [HttpGet("{id}")]
+        // public IActionResult ConsultarPorId(int id)
+        // {
+        //     SistemaModel sistemaModel;
+        //     SistemaTransfer sistema;
 
-            try {
-                sistemaModel = new SistemaModel();
+        //     try {
+        //         sistemaModel = new SistemaModel();
 
-                if (id > 0) {
-                    sistema = sistemaModel.ConsultarPorId(id);
-                } else {
-                    sistema = null;
-                }
-            } catch (Exception ex) {
-                sistema = new SistemaTransfer();
-                
-                sistema.Validacao = false;
-                sistema.Erro = true;
-                sistema.IncluirMensagem("Erro em SistemaController ConsultarPorId [" + ex.Message + "]");
-            } finally {
-                sistemaModel = null;
-            }
+        //         if (id > 0) {
+        //             sistema = sistemaModel.ConsultarPorId(id);
+        //         } else {
+        //             sistema = null;
+        //         }
+        //     } catch (Exception ex) {
+        //         sistema = new SistemaTransfer();
 
-            sistema.TratarLinks();
+        //         sistema.Validacao = false;
+        //         sistema.Erro = true;
+        //         sistema.IncluirMensagem("Erro em SistemaController ConsultarPorId [" + ex.Message + "]");
+        //     } finally {
+        //         sistemaModel = null;
+        //     }
 
-            if (sistema.Erro || !sistema.Validacao) {
-                return BadRequest(sistema);
-            } else {
-                return Ok(sistema);
-            }
-        }
+        //     sistema.TratarLinks();
 
-        [HttpGet]
-        public IActionResult Listar()
-        {
-            SistemaModel sistemaModel;
-            SistemaTransfer sistemaLista;
+        //     if (sistema.Erro || !sistema.Validacao) {
+        //         return BadRequest(sistema);
+        //     } else {
+        //         return Ok(sistema);
+        //     }
+        // }
 
-            try {
-                sistemaModel = new SistemaModel();
+        // [HttpGet]
+        // public IActionResult Listar()
+        // {
+        //     SistemaModel sistemaModel;
+        //     SistemaTransfer sistemaLista;
 
-                sistemaLista = sistemaModel.Consultar(new SistemaTransfer());
-            } catch (Exception ex) {
-                sistemaLista = new SistemaTransfer();
+        //     try {
+        //         sistemaModel = new SistemaModel();
 
-                sistemaLista.Validacao = false;
-                sistemaLista.Erro = true;
-                sistemaLista.IncluirMensagem("Erro em SistemaController Listar [" + ex.Message + "]");
-            } finally {
-                sistemaModel = null;
-            }
+        //         sistemaLista = sistemaModel.Consultar(new SistemaTransfer());
+        //     } catch (Exception ex) {
+        //         sistemaLista = new SistemaTransfer();
 
-            sistemaLista.TratarLinks();
+        //         sistemaLista.Validacao = false;
+        //         sistemaLista.Erro = true;
+        //         sistemaLista.IncluirMensagem("Erro em SistemaController Listar [" + ex.Message + "]");
+        //     } finally {
+        //         sistemaModel = null;
+        //     }
 
-            if (sistemaLista.Erro || !sistemaLista.Validacao) {
-                return BadRequest(sistemaLista);
-            } else {
-                return Ok(sistemaLista);
-            }
-        }
+        //     sistemaLista.TratarLinks();
+
+        //     if (sistemaLista.Erro || !sistemaLista.Validacao) {
+        //         return BadRequest(sistemaLista);
+        //     } else {
+        //         return Ok(sistemaLista);
+        //     }
+        // }
 
         [HttpPost("lista")]
         public IActionResult Consultar(SistemaTransfer sistemaTransfer)
@@ -101,93 +101,93 @@ namespace rcLogWebApi.Controllers
             }
         }
 
-        [HttpPost]
-        public IActionResult Incluir(SistemaTransfer sistemaTransfer)
-        {
-            SistemaModel sistemaModel;
-            SistemaTransfer sistema;
+        // [HttpPost]
+        // public IActionResult Incluir(SistemaTransfer sistemaTransfer)
+        // {
+        //     SistemaModel sistemaModel;
+        //     SistemaTransfer sistema;
 
-            try {
-                sistemaModel = new SistemaModel();
+        //     try {
+        //         sistemaModel = new SistemaModel();
 
-                sistema = sistemaModel.Incluir(sistemaTransfer);
-            } catch (Exception ex) {
-                sistema = new SistemaTransfer();
+        //         sistema = sistemaModel.Incluir(sistemaTransfer);
+        //     } catch (Exception ex) {
+        //         sistema = new SistemaTransfer();
 
-                sistema.Validacao = false;
-                sistema.Erro = true;
-                sistema.IncluirMensagem("Erro em SistemaController Incluir [" + ex.Message + "]");
-            } finally {
-                sistemaModel = null;
-            }
+        //         sistema.Validacao = false;
+        //         sistema.Erro = true;
+        //         sistema.IncluirMensagem("Erro em SistemaController Incluir [" + ex.Message + "]");
+        //     } finally {
+        //         sistemaModel = null;
+        //     }
 
-            sistema.TratarLinks();
+        //     sistema.TratarLinks();
 
-            if (sistema.Erro || !sistema.Validacao) {
-                return BadRequest(sistema);
-            } else {
-                string uri = Url.Action("ConsultarPorId", new { id = sistema.Sistema.Id });
+        //     if (sistema.Erro || !sistema.Validacao) {
+        //         return BadRequest(sistema);
+        //     } else {
+        //         string uri = Url.Action("ConsultarPorId", new { id = sistema.Sistema.Id });
 
-                return Created(uri, sistema);
-            }
-        }
+        //         return Created(uri, sistema);
+        //     }
+        // }
 
-        [HttpPut]
-        public IActionResult Alterar(SistemaTransfer sistemaTransfer)
-        {
-            SistemaModel sistemaModel;
-            SistemaTransfer sistema;
+        // [HttpPut]
+        // public IActionResult Alterar(SistemaTransfer sistemaTransfer)
+        // {
+        //     SistemaModel sistemaModel;
+        //     SistemaTransfer sistema;
 
-            try {
-                sistemaModel = new SistemaModel();
+        //     try {
+        //         sistemaModel = new SistemaModel();
 
-                sistema = sistemaModel.Alterar(sistemaTransfer);
-            } catch (Exception ex) {
-                sistema = new SistemaTransfer();
+        //         sistema = sistemaModel.Alterar(sistemaTransfer);
+        //     } catch (Exception ex) {
+        //         sistema = new SistemaTransfer();
 
-                sistema.Validacao = false;
-                sistema.Erro = true;
-                sistema.IncluirMensagem("Erro em SistemaController Alterar [" + ex.Message + "]");
-            } finally {
-                sistemaModel = null;
-            }
+        //         sistema.Validacao = false;
+        //         sistema.Erro = true;
+        //         sistema.IncluirMensagem("Erro em SistemaController Alterar [" + ex.Message + "]");
+        //     } finally {
+        //         sistemaModel = null;
+        //     }
 
-            sistema.TratarLinks();
+        //     sistema.TratarLinks();
 
-            if (sistema.Erro || !sistema.Validacao) {
-                return BadRequest(sistema);
-            } else {
-                return Ok(sistema);
-            }
-        }
+        //     if (sistema.Erro || !sistema.Validacao) {
+        //         return BadRequest(sistema);
+        //     } else {
+        //         return Ok(sistema);
+        //     }
+        // }
 
-        [HttpDelete("{id}")]
-        public IActionResult Excluir(int id)
-        {
-            SistemaModel sistemaModel;
-            SistemaTransfer sistema;
+        // [HttpDelete("{id}")]
+        // public IActionResult Excluir(int id)
+        // {
+        //     SistemaModel sistemaModel;
+        //     SistemaTransfer sistema;
 
-            try {
-                sistemaModel = new SistemaModel();
+        //     try {
+        //         sistemaModel = new SistemaModel();
 
-                sistema = sistemaModel.Excluir(id);
-            } catch (Exception ex) {
-                sistema = new SistemaTransfer();
+        //         sistema = sistemaModel.Excluir(id);
+        //     } catch (Exception ex) {
+        //         sistema = new SistemaTransfer();
 
-                sistema.Validacao = false;
-                sistema.Erro = true;
-                sistema.IncluirMensagem("Erro em SistemaController Excluir [" + ex.Message + "]");
-            } finally {
-                sistemaModel = null;
-            }
+        //         sistema.Validacao = false;
+        //         sistema.Erro = true;
+        //         sistema.IncluirMensagem("Erro em SistemaController Excluir [" + ex.Message + "]");
+        //     } finally {
+        //         sistemaModel = null;
+        //     }
 
-            sistema.TratarLinks();
+        //     sistema.TratarLinks();
 
-            if (sistema.Erro || !sistema.Validacao) {
-                return BadRequest(sistema);
-            } else {
-                return Ok(sistema);
-            }
-        }
+        //     if (sistema.Erro || !sistema.Validacao) {
+        //         return BadRequest(sistema);
+        //     } else {
+        //         return Ok(sistema);
+        //     }
+        // }
     }
 }

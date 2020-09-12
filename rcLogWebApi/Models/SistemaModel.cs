@@ -8,13 +8,13 @@ namespace rcLogWebApi.Models
     {
         public SistemaTransfer Incluir(SistemaTransfer sistemaTransfer)
         {
-            // SistemaDataModel sistemaDataModel;
+            SistemaDataModel sistemaDataModel;
             SistemaTransfer sistemaValidacao;
             SistemaTransfer sistemaInclusao;
 
             try {
                 // sistemaBusiness = new SistemaBusiness();
-                // sistemaDataModel = new SistemaDataModel();
+                sistemaDataModel = new SistemaDataModel();
 
                 // sistemaValidacao = sistemaBusiness.Validar(sistemaTransfer);
                 sistemaValidacao = new SistemaTransfer();
@@ -36,7 +36,7 @@ namespace rcLogWebApi.Models
                 sistemaInclusao.Erro = true;
                 sistemaInclusao.IncluirMensagem("Erro em SistemaModel Incluir [" + ex.Message + "]");
             } finally {
-                // sistemaDataModel = null;
+                sistemaDataModel = null;
                 // sistemaBusiness = null;
                 sistemaValidacao = null;
             }
@@ -131,21 +131,21 @@ namespace rcLogWebApi.Models
 
         public SistemaTransfer Consultar(SistemaTransfer sistemaListaTransfer)
         {
-            // SistemaDataModel sistemaDataModel;
+            SistemaDataModel sistemaDataModel;
             // SistemaBusiness sistemaBusiness;
             SistemaTransfer sistemaValidacao;
             SistemaTransfer sistemaLista;
 
             try {
                 // sistemaBusiness = new SistemaBusiness();
-                // sistemaDataModel = new SistemaDataModel();
+                sistemaDataModel = new SistemaDataModel();
 
                 // sistemaValidacao = sistemaBusiness.ValidarConsulta(sistemaListaTransfer);
                 sistemaValidacao = new SistemaTransfer();
 
                 if (!sistemaValidacao.Erro) {
                     if (sistemaValidacao.Validacao) {
-                        // sistemaLista = sistemaDataModel.Consultar(sistemaValidacao);
+                        sistemaLista = sistemaDataModel.Consultar(sistemaValidacao);
                         sistemaLista = new SistemaTransfer();
 
                         if (sistemaLista != null) {
@@ -174,7 +174,7 @@ namespace rcLogWebApi.Models
                 sistemaLista.Erro = true;
                 sistemaLista.IncluirMensagem("Erro em SistemaModel Consultar [" + ex.Message + "]");
             } finally {
-                // sistemaDataModel = null;
+                sistemaDataModel = null;
                 // sistemaBusiness = null;
                 sistemaValidacao = null;
             }

@@ -7,7 +7,7 @@ namespace rcLogDatabase
     public class LogSqlServerDatabase : ILogDatabase
     {
         public int tempoConexao;
-        private SqlConnection con = null;
+        public SqlConnection con = null;
         public SqlTransaction tran = null;
 
         public LogSqlServerDatabase()

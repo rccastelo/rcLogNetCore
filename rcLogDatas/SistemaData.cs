@@ -1,4 +1,6 @@
+using System.Data.Common;
 using rcLogDatabase;
+using rcLogEntities;
 using rcLogTransfers;
 
 namespace rcLogDatas
@@ -9,15 +11,33 @@ namespace rcLogDatas
         {
         }
 
-        public void Incluir(SistemaTransfer pSistema)
+        public SistemaTransfer Consultar(SistemaTransfer pSistema)
         {
+            DbDataReader dr = null;
+            SistemaTransfer ret = null;
+
             LogComando cmd = db.Comando();
 
-            cmd.Comando("");
-            cmd.Tempo(1);
-            cmd.IncluirParametro("", null, null, "");
+            cmd.Comando("SELECT * FROM Sistema");
+            //cmd.IncluirParametro("", null, null, "");
 
-            cmd.ExecutarComando();
+            dr = cmd.ExecutarComandoLista();
+
+            if (dr != null) {
+                ret =  new SistemaTransfer();
+
+                if (dr.HasRows) {
+                    while(dr.Read()) {
+                        SistemaEntity sistema = new SistemaEntity();
+
+                        ret.IncluirSistema(sistema);
+                    }
+                }
+            }
+
+            dr.Dispose();
+
+            return ret;
         }
     }
 }
