@@ -31,37 +31,6 @@ namespace rcLogWeb.Controllers
             return View(logTransfer);
         }
 
-        [Authorize]
-        [HttpGet]
-        public IActionResult Sistemas()
-        {
-            ViewData["Usuario"] = UsuarioNome;
-
-            SistemaTransfer sistemaTransfer = new SistemaTransfer();
-
-            sistemaTransfer.Paginacao.PaginaInicial = 4;
-            sistemaTransfer.Paginacao.PaginaAtual = 6;
-            sistemaTransfer.Paginacao.PaginaFinal = 8;
-            sistemaTransfer.Paginacao.RegistrosPorPagina = 4;
-            sistemaTransfer.Paginacao.TotalPaginas = 15;
-            sistemaTransfer.Paginacao.TotalRegistros = 59;
-
-            return View(sistemaTransfer);
-        }
-
-        [Authorize]
-        [HttpGet]
-        public IActionResult Sair()
-        {
-            AutenticaModel autenticaModel;
-
-            autenticaModel = new AutenticaModel(httpContext);
-
-            autenticaModel.Sair();
-
-            return RedirectToAction("Index", "Home");
-        }
-
         public IActionResult Error()
         {
             return View();

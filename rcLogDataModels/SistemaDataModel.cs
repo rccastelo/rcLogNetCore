@@ -7,31 +7,31 @@ namespace rcLogDataModels
 {
     public class SistemaDataModel : DataModel
     {
-        public SistemaTransfer Incluir(SistemaTransfer sistemaTransfer)
-        {
-            SistemaData sistemaData;
-            SistemaTransfer sistema;
+        // public SistemaTransfer Incluir(SistemaTransfer sistemaTransfer)
+        // {
+        //     SistemaData sistemaData;
+        //     SistemaTransfer sistema;
 
-            try {
-                sistemaData = new SistemaData(db);
-                sistema = new SistemaTransfer(sistemaTransfer);
+        //     try {
+        //         sistemaData = new SistemaData(db);
+        //         sistema = new SistemaTransfer(sistemaTransfer);
 
-                sistemaData.Incluir(sistema);
+        //         sistemaData.Incluir(sistema);
 
-                db.ConfirmarTransacao();
-            } catch (Exception ex) {
-                db.CancelarTransacao();
+        //         db.ConfirmarTransacao();
+        //     } catch (Exception ex) {
+        //         db.CancelarTransacao();
                 
-                sistema = new SistemaTransfer();
+        //         sistema = new SistemaTransfer();
 
-                sistema.Erro = true;
-                sistema.IncluirMensagem("Erro em SistemaDataModel Incluir [" + ex.Message + "]");
-            } finally {
-                sistemaData = null;
-            }
+        //         sistema.Erro = true;
+        //         sistema.IncluirMensagem("Erro em SistemaDataModel Incluir [" + ex.Message + "]");
+        //     } finally {
+        //         sistemaData = null;
+        //     }
 
-            return sistema;
-        }
+        //     return sistema;
+        // }
 
         // public SistemaTransfer Alterar(SistemaTransfer sistemaTransfer)
         // {
@@ -116,28 +116,28 @@ namespace rcLogDataModels
         //     return sistema;
         // }
 
-        // public SistemaTransfer Consultar(SistemaTransfer sistemaTransfer)
-        // {
-        //     SistemaData sistemaData;
-        //     SistemaTransfer corLista;
+        public SistemaTransfer Consultar(SistemaTransfer sistemaTransfer)
+        {
+            SistemaData sistemaData;
+            SistemaTransfer ret;
 
-        //     try {
-        //         sistemaData = new SistemaData(_contexto);
+            try {
+                sistemaData = new SistemaData(db);
 
-        //         corLista = sistemaData.Consultar(sistemaTransfer);
-        //         corLista.Validacao = true;
-        //         corLista.Erro = false;
-        //     } catch (Exception ex) {
-        //         corLista = new SistemaTransfer();
+                ret = sistemaData.Consultar(sistemaTransfer);
 
-        //         corLista.Validacao = false;
-        //         corLista.Erro = true;
-        //         corLista.IncluirMensagem("Erro em SistemaDataModel Consultar [" + ex.Message + "]");
-        //     } finally {
-        //         sistemaData = null;
-        //     }
+                db.ConfirmarTransacao();
+            } catch (Exception ex) {
+                ret = new SistemaTransfer();
 
-        //     return corLista;
-        // }
+                ret.Erro = true;
+
+                ret.IncluirMensagem("Erro em SistemaDataModel Consultar [" + ex.Message + "]");
+            } finally {
+                sistemaData = null;
+            }
+
+            return ret;
+        }
     }
 }
