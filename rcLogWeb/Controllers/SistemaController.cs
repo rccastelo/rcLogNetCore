@@ -22,18 +22,19 @@ namespace rcLogWeb.Controllers
 
             SistemaModel sistemaModel = new SistemaModel(httpContext);
 
-            SistemaTransfer sistemaTransfer = new SistemaTransfer();
+            SistemaTransfer sistemaReq = new SistemaTransfer();
+            SistemaTransfer sistemaRes = new SistemaTransfer();
 
-            await sistemaModel.Consultar(sistemaTransfer);
+            sistemaReq.Paginacao.RegistrosPorPagina = 3;
+            sistemaReq.Paginacao.PaginaAtual = 2;
+            sistemaReq.Sistema = new rcLogEntities.SistemaEntity();
+            sistemaReq.Sistema.Codigo = "cod";
+            sistemaReq.Filtro.Descricao = "desc";
+            sistemaReq.teste = 1;
 
-            sistemaTransfer.Paginacao.PaginaInicial = 4;
-            sistemaTransfer.Paginacao.PaginaAtual = 6;
-            sistemaTransfer.Paginacao.PaginaFinal = 8;
-            sistemaTransfer.Paginacao.RegistrosPorPagina = 4;
-            sistemaTransfer.Paginacao.TotalPaginas = 15;
-            sistemaTransfer.Paginacao.TotalRegistros = 59;
+            sistemaRes = await sistemaModel.Consultar(sistemaReq);
 
-            return View(sistemaTransfer);
+            return View(sistemaRes);
         }
 
         public IActionResult Error()

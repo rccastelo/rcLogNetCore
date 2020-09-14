@@ -11,6 +11,8 @@ namespace rcLogTransfers
 
         public object Links { get; set; }
 
+        public int teste { get; set; }
+
         public void TratarLinks() {
             string id = ((this.Sistema != null) ? this.Sistema.Id.ToString() : "0");
 

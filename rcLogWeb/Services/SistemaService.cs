@@ -2,6 +2,7 @@ using System;
 using System.Net;
 using System.Net.Http;
 using System.Net.Http.Headers;
+using System.Text;
 using System.Threading.Tasks;
 using Newtonsoft.Json;
 using rcLogTransfers;
@@ -186,21 +187,23 @@ namespace rcLogWeb.Services
         //     return sistema;
         // }
 
-        public async Task<SistemaTransfer> Consultar(SistemaTransfer pLogLista, string pAutorizacao)
+        public async Task<SistemaTransfer> Consultar(SistemaTransfer pSistemaLista, string pAutorizacao)
         {
-            SistemaTransfer logLista = null;
+            SistemaTransfer sistemaLista = null;
             HttpResponseMessage resposta = null;
             string mensagemRetono = null;
             
             try {
-                httpClient.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("Bearer", pAutorizacao);
+                //httpClient.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("Bearer", pAutorizacao);
 
-                resposta = await httpClient.PostAsync($"{nomeServico}/lista", new StringContent(JsonConvert.SerializeObject(pLogLista)));
+                HttpContent content = new StringContent(JsonConvert.SerializeObject(pSistemaLista), Encoding.UTF8, "application/json");
+
+                resposta = await httpClient.PostAsync($"{nomeServico}/lista", content);
 
                 if (resposta.IsSuccessStatusCode) {
-                    logLista = JsonConvert.DeserializeObject<SistemaTransfer>(resposta.Content.ReadAsStringAsync().Result);
+                    sistemaLista = JsonConvert.DeserializeObject<SistemaTransfer>(resposta.Content.ReadAsStringAsync().Result);
                 } else if (resposta.StatusCode == HttpStatusCode.BadRequest) {
-                    logLista = JsonConvert.DeserializeObject<SistemaTransfer>(resposta.Content.ReadAsStringAsync().Result);
+                    sistemaLista = JsonConvert.DeserializeObject<SistemaTransfer>(resposta.Content.ReadAsStringAsync().Result);
                 } else if (resposta.StatusCode == HttpStatusCode.Unauthorized) {
                     mensagemRetono = $"Acesso ao serviço {nomeServico} Consultar não autorizado";
                 } else {
@@ -208,23 +211,23 @@ namespace rcLogWeb.Services
                 }
 
                 if (!string.IsNullOrEmpty(mensagemRetono)) {
-                    logLista = new SistemaTransfer();
+                    sistemaLista = new SistemaTransfer();
                     
-                    logLista.Validacao = false;
-                    logLista.Erro = true;
-                    logLista.IncluirMensagem(mensagemRetono);
+                    sistemaLista.Validacao = false;
+                    sistemaLista.Erro = true;
+                    sistemaLista.IncluirMensagem(mensagemRetono);
                 }
             } catch (Exception ex) {
-                logLista = new SistemaTransfer();
+                sistemaLista = new SistemaTransfer();
 
-                logLista.Validacao = false;
-                logLista.Erro = true;
-                logLista.IncluirMensagem("Erro em SistemaService Consultar [" + ex.Message + "]");
+                sistemaLista.Validacao = false;
+                sistemaLista.Erro = true;
+                sistemaLista.IncluirMensagem("Erro em SistemaService Consultar [" + ex.Message + "]");
             } finally {
                 resposta = null;
             }
 
-            return logLista;
+            return sistemaLista;
         }
     }
 }
