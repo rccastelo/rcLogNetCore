@@ -146,7 +146,6 @@ namespace rcLogWebApi.Models
                 if (!sistemaValidacao.Erro) {
                     if (sistemaValidacao.Validacao) {
                         sistemaLista = sistemaDataModel.Consultar(sistemaValidacao);
-                        sistemaLista = new SistemaTransfer();
 
                         if (sistemaLista != null) {
                             if (sistemaLista.Paginacao.TotalRegistros > 0) {
@@ -169,8 +168,6 @@ namespace rcLogWebApi.Models
                 }
             } catch (Exception ex) {
                 sistemaLista = new SistemaTransfer();
-
-                sistemaLista.Validacao = false;
                 sistemaLista.Erro = true;
                 sistemaLista.IncluirMensagem("Erro em SistemaModel Consultar [" + ex.Message + "]");
             } finally {
