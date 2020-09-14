@@ -16,14 +16,31 @@ namespace rcLogDatas
         {
             DbDataReader dr = null;
             SistemaTransfer ret = null;
+            LogComando cmd = db.Comando();
 
             int pular = 0;
             int registrosPorPagina = 0;
             int totalRegistros = 0;
 
-            LogComando cmd = db.Comando();
+            if (pSistema.Paginacao.RegistrosPorPagina < 1) {
+                registrosPorPagina = 30;
+            } else if (pSistema.Paginacao.RegistrosPorPagina > 200) {
+                registrosPorPagina = 30;
+            } else {
+                registrosPorPagina = pSistema.Paginacao.RegistrosPorPagina;
+            }
 
-            cmd.Comando("SELECT * FROM Sistema");
+            pular = (pSistema.Paginacao.PaginaAtual < 2 ? 0 : pSistema.Paginacao.PaginaAtual - 1);
+            pular *= registrosPorPagina;
+
+            string comandoSql = $"SELECT s.*, qq.qtd AS qtd_query " +
+                "FROM Sistema s " +
+                "CROSS JOIN (SELECT Count(*) AS qtd FROM Sistema) AS qq " +
+                "ORDER BY s.id " +
+                "OFFSET " + pular + " ROWS " +
+                "FETCH NEXT " + registrosPorPagina + " ROWS ONLY";
+
+            cmd.Comando(comandoSql);
             //cmd.IncluirParametro("", null, null, "");
 
             dr = cmd.ExecutarComandoLista();
@@ -32,18 +49,6 @@ namespace rcLogDatas
                 ret =  new SistemaTransfer();
 
                 if (dr.HasRows) {
-
-                    if (pSistema.Paginacao.RegistrosPorPagina < 1) {
-                        registrosPorPagina = 30;
-                    } else if (pSistema.Paginacao.RegistrosPorPagina > 200) {
-                        registrosPorPagina = 30;
-                    } else {
-                        registrosPorPagina = pSistema.Paginacao.RegistrosPorPagina;
-                    }
-
-                    pular = (pSistema.Paginacao.PaginaAtual < 2 ? 0 : pSistema.Paginacao.PaginaAtual - 1);
-                    pular *= registrosPorPagina;
-
                     while(dr.Read()) {
                         SistemaEntity sistema = new SistemaEntity();
 
@@ -52,11 +57,11 @@ namespace rcLogDatas
                         sistema.Descricao = Convert.ToString(dr["descricao"]);
                         sistema.Codigo = Convert.ToString(dr["codigo"]);
                         sistema.Ativo = Convert.ToBoolean(dr["ativo"]);
+                        
+                        totalRegistros = Convert.ToInt32(dr["qtd_query"]);
 
                         ret.IncluirSistema(sistema);
                     }
-
-                    totalRegistros = ret.Lista.Count;
 
                     ret.Paginacao.RegistrosPorPagina = registrosPorPagina;
                     ret.Paginacao.TotalRegistros = totalRegistros;

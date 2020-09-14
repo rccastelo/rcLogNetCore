@@ -157,6 +157,9 @@ namespace rcLogWeb.Models
                             Convert.ToInt32(Math.Ceiling(Convert.ToDecimal(sistemaLista.Paginacao.TotalRegistros) 
                             / @Convert.ToDecimal(sistemaLista.Paginacao.RegistrosPorPagina)));
                         sistemaLista.Paginacao.TotalPaginas = (sistemaLista.Paginacao.TotalPaginas < 1 ? 1 : sistemaLista.Paginacao.TotalPaginas);
+                        if (sistemaLista.Paginacao.PaginaAtual > sistemaLista.Paginacao.TotalPaginas) {
+                            sistemaLista.Paginacao.PaginaAtual = sistemaLista.Paginacao.TotalPaginas;
+                        }
 
                         qtdExibe = (qtdExibe > sistemaLista.Paginacao.TotalPaginas ? sistemaLista.Paginacao.TotalPaginas : qtdExibe);
 

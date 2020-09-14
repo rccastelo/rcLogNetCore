@@ -6,7 +6,7 @@ using rcLogTransfers;
 
 namespace rcLogWebApi.Controllers
 {
-    // [Authorize]
+    [Authorize]
     [Route("[controller]")]
     public class SistemaController : ControllerBase
     {
@@ -73,7 +73,7 @@ namespace rcLogWebApi.Controllers
         // }
 
         [HttpPost("lista")]
-        public IActionResult Consultar(SistemaTransfer pSistema)
+        public IActionResult Consultar([FromBody] SistemaTransfer pSistema)
         {
             SistemaModel sistemaModel;
             SistemaTransfer sistemaLista;
