@@ -1,8 +1,10 @@
-﻿using Microsoft.AspNetCore.Builder;
+﻿using System;
+using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Logging;
+using Microsoft.IdentityModel.Tokens;
 
 namespace rcLogWebApi
 {
@@ -38,9 +40,28 @@ namespace rcLogWebApi
                 app.UseDeveloperExceptionPage();
             }
 
-            app.UseMvc();
+            var tokenValidationParameters = new TokenValidationParameters
+            {
+                ValidateIssuerSigningKey = true,
+                IssuerSigningKey = new SymmetricSecurityKey(System.Text.Encoding.UTF8.GetBytes("rc-chave-autenticacao")),
+                ValidateIssuer = true,
+                ValidIssuer = "rc-issuer",
+                ValidateAudience = true,
+                ValidAudience = "rc-audience",
+                ValidateLifetime = true,
+                ClockSkew = TimeSpan.FromMinutes(5)
+            };
 
-            
+            var bearerOptions = new JwtBearerOptions
+            {
+                AutomaticAuthenticate = true,
+                AutomaticChallenge = true,
+                TokenValidationParameters = tokenValidationParameters
+            };
+
+            app.UseJwtBearerAuthentication(bearerOptions);
+
+            app.UseMvc().UseJwtBearerAuthentication(bearerOptions);
         }
     }
 }

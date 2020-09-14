@@ -1,3 +1,4 @@
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 
 namespace rcLogWebApi.Controllers
@@ -11,7 +12,7 @@ namespace rcLogWebApi.Controllers
             return Ok("Testar OK");
         }
 
-        // [Authorize]
+        [Authorize]
         [HttpGet("autenticado")]
         public IActionResult Autenticado()
         {

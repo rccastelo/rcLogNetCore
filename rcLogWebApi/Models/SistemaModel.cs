@@ -141,7 +141,7 @@ namespace rcLogWebApi.Models
                 sistemaDataModel = new SistemaDataModel();
 
                 // sistemaValidacao = sistemaBusiness.ValidarConsulta(pSistemaLista);
-                sistemaValidacao = new SistemaTransfer();
+                sistemaValidacao = new SistemaTransfer(pSistemaLista);
 
                 if (!sistemaValidacao.Erro) {
                     if (sistemaValidacao.Validacao) {
@@ -158,6 +158,9 @@ namespace rcLogWebApi.Models
                                 sistemaLista.Paginacao.TotalPaginas = 
                                     Convert.ToInt32(Math.Ceiling(Convert.ToDecimal(sistemaLista.Paginacao.TotalRegistros) 
                                     / @Convert.ToDecimal(sistemaLista.Paginacao.RegistrosPorPagina)));
+                                if (sistemaLista.Paginacao.PaginaAtual > sistemaLista.Paginacao.TotalPaginas) {
+                                    sistemaLista.Paginacao.PaginaAtual = sistemaLista.Paginacao.TotalPaginas;
+                                }
                             }
                         }
                     } else {

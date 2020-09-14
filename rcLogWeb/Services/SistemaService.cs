@@ -194,7 +194,7 @@ namespace rcLogWeb.Services
             string mensagemRetono = null;
             
             try {
-                //httpClient.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("Bearer", pAutorizacao);
+                httpClient.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("Bearer", pAutorizacao);
 
                 HttpContent content = new StringContent(JsonConvert.SerializeObject(pSistemaLista), Encoding.UTF8, "application/json");
 

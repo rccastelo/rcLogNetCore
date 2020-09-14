@@ -30,7 +30,6 @@ namespace rcLogWeb.Controllers
             sistemaReq.Sistema = new rcLogEntities.SistemaEntity();
             sistemaReq.Sistema.Codigo = "cod";
             sistemaReq.Filtro.Descricao = "desc";
-            sistemaReq.teste = 1;
 
             sistemaRes = await sistemaModel.Consultar(sistemaReq);
 
