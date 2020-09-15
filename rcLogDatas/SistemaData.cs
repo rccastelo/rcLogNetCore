@@ -33,15 +33,16 @@ namespace rcLogDatas
             pular = (pSistema.Paginacao.PaginaAtual < 2 ? 0 : pSistema.Paginacao.PaginaAtual - 1);
             pular *= registrosPorPagina;
 
-            string comandoSql = $"SELECT s.*, qq.qtd AS qtd_query " +
-                "FROM Sistema s " +
-                "CROSS JOIN (SELECT Count(*) AS qtd FROM Sistema) AS qq " +
-                "ORDER BY s.id " +
-                "OFFSET " + pular + " ROWS " +
-                "FETCH NEXT " + registrosPorPagina + " ROWS ONLY";
+            string sqlSelect = $"SELECT s.*, qq.qtd AS qtd_query FROM Sistema s ";
+            string sqlWhere = "";
+            string sqlJoin = "CROSS JOIN (";
+            string sqlSelectJoin = "SELECT Count(*) AS qtd FROM Sistema ";
+            string sqlOrder = ") AS qq ORDER BY s.id ";
+            string sqlPaginacao = "OFFSET " + pular + " ROWS FETCH NEXT " + registrosPorPagina + " ROWS ONLY";
 
-            cmd.Comando(comandoSql);
-            //cmd.IncluirParametro("", null, null, "");
+            string sqlComando = sqlSelect + sqlWhere + sqlJoin + sqlSelectJoin + sqlWhere + sqlOrder + sqlPaginacao;
+
+            cmd.Comando(sqlComando);
 
             dr = cmd.ExecutarComandoLista();
 

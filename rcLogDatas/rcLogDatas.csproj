@@ -4,6 +4,7 @@
     <ProjectReference Include="..\rcLogDatabase\rcLogDatabase.csproj" />
     <ProjectReference Include="..\rcLogTransfers\rcLogTransfers.csproj" />
     <ProjectReference Include="..\rcLogEntities\rcLogEntities.csproj" />
+    <ProjectReference Include="..\rcLogUtils\rcLogUtils.csproj" />
   </ItemGroup>
 
   <PropertyGroup>

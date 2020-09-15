@@ -189,7 +189,7 @@ namespace rcLogWeb.Models
 
                 sistemaLista.Validacao = false;
                 sistemaLista.Erro = true;
-                sistemaLista.IncluirMensagem("Erro em LogModel Consultar [" + ex.Message + "]");
+                sistemaLista.IncluirMensagem("Erro em SistemaModel Consultar [" + ex.Message + "]");
             } finally {
                 sistemaService = null;
                 autenticaModel = null;

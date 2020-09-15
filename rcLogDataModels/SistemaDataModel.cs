@@ -1,6 +1,5 @@
 ﻿using System;
 using rcLogDatas;
-using rcLogDatabase;
 using rcLogTransfers;
 
 namespace rcLogDataModels

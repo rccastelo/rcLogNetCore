@@ -6,147 +6,146 @@ namespace rcLogWebApi.Models
 {
     public class LogModel
     {
-        public LogTransfer Incluir(LogTransfer pLog)
-        {
-            // LogDataModel logDataModel;
-            LogTransfer logValidacao;
-            LogTransfer logInclusao;
+        // public LogTransfer Incluir(LogTransfer pLog)
+        // {
+        //     // LogDataModel logDataModel;
+        //     LogTransfer logValidacao;
+        //     LogTransfer logInclusao;
 
-            try {
-                // logBusiness = new LogBusiness();
-                // logDataModel = new LogDataModel();
+        //     try {
+        //         // logBusiness = new LogBusiness();
+        //         // logDataModel = new LogDataModel();
 
-                // logValidacao = logBusiness.Validar(pLog);
-                logValidacao = new LogTransfer();
+        //         // logValidacao = logBusiness.Validar(pLog);
+        //         logValidacao = new LogTransfer();
 
-                if (!logValidacao.Erro) {
-                    if (logValidacao.Validacao) {
-                        // logInclusao = logDataModel.Incluir(logValidacao);
-                        logInclusao = new LogTransfer();
-                    } else {
-                        logInclusao = new LogTransfer(logValidacao);
-                    }
-                } else {
-                    logInclusao = new LogTransfer(logValidacao);
-                }
-            } catch (Exception ex) {
-                logInclusao = new LogTransfer();
+        //         if (!logValidacao.Erro) {
+        //             if (logValidacao.Validacao) {
+        //                 // logInclusao = logDataModel.Incluir(logValidacao);
+        //                 logInclusao = new LogTransfer();
+        //             } else {
+        //                 logInclusao = new LogTransfer(logValidacao);
+        //             }
+        //         } else {
+        //             logInclusao = new LogTransfer(logValidacao);
+        //         }
+        //     } catch (Exception ex) {
+        //         logInclusao = new LogTransfer();
 
-                logInclusao.Validacao = false;
-                logInclusao.Erro = true;
-                logInclusao.IncluirMensagem("Erro em LogModel Incluir [" + ex.Message + "]");
-            } finally {
-                // logDataModel = null;
-                // logBusiness = null;
-                logValidacao = null;
-            }
+        //         logInclusao.Validacao = false;
+        //         logInclusao.Erro = true;
+        //         logInclusao.IncluirMensagem("Erro em LogModel Incluir [" + ex.Message + "]");
+        //     } finally {
+        //         // logDataModel = null;
+        //         // logBusiness = null;
+        //         logValidacao = null;
+        //     }
 
-            return logInclusao;
-        }
+        //     return logInclusao;
+        // }
 
-        public LogTransfer Alterar(LogTransfer pLog)
-        {
-            // LogDataModel logDataModel;
-            // LogBusiness logBusiness;
-            LogTransfer logValidacao;
-            LogTransfer logAlteracao;
+        // public LogTransfer Alterar(LogTransfer pLog)
+        // {
+        //     // LogDataModel logDataModel;
+        //     // LogBusiness logBusiness;
+        //     LogTransfer logValidacao;
+        //     LogTransfer logAlteracao;
 
-            try {
-                // logBusiness = new LogBusiness();
-                // logDataModel = new LogDataModel();
+        //     try {
+        //         // logBusiness = new LogBusiness();
+        //         // logDataModel = new LogDataModel();
 
-                // logValidacao = logBusiness.Validar(pLog);
-                logValidacao = new LogTransfer();
+        //         // logValidacao = logBusiness.Validar(pLog);
+        //         logValidacao = new LogTransfer();
 
-                if (!logValidacao.Erro) {
-                    if (logValidacao.Validacao) {
-                        // logAlteracao = logDataModel.Alterar(logValidacao);
-                        logAlteracao = new LogTransfer();
-                    } else {
-                        logAlteracao = new LogTransfer(logValidacao);
-                    }
-                } else {
-                    logAlteracao = new LogTransfer(logValidacao);
-                }
-            } catch (Exception ex) {
-                logAlteracao = new LogTransfer();
+        //         if (!logValidacao.Erro) {
+        //             if (logValidacao.Validacao) {
+        //                 // logAlteracao = logDataModel.Alterar(logValidacao);
+        //                 logAlteracao = new LogTransfer();
+        //             } else {
+        //                 logAlteracao = new LogTransfer(logValidacao);
+        //             }
+        //         } else {
+        //             logAlteracao = new LogTransfer(logValidacao);
+        //         }
+        //     } catch (Exception ex) {
+        //         logAlteracao = new LogTransfer();
 
-                logAlteracao.Validacao = false;
-                logAlteracao.Erro = true;
-                logAlteracao.IncluirMensagem("Erro em LogModel Alterar [" + ex.Message + "]");
-            } finally {
-                // logDataModel = null;
-                // logBusiness = null;
-                logValidacao = null;
-            }
+        //         logAlteracao.Validacao = false;
+        //         logAlteracao.Erro = true;
+        //         logAlteracao.IncluirMensagem("Erro em LogModel Alterar [" + ex.Message + "]");
+        //     } finally {
+        //         // logDataModel = null;
+        //         // logBusiness = null;
+        //         logValidacao = null;
+        //     }
 
-            return logAlteracao;
-        }
+        //     return logAlteracao;
+        // }
 
-        public LogTransfer Excluir(int pId)
-        {
-            // LogDataModel logDataModel;
-            LogTransfer log;
+        // public LogTransfer Excluir(int pId)
+        // {
+        //     // LogDataModel logDataModel;
+        //     LogTransfer log;
 
-            try {
-                // logDataModel = new LogDataModel();
+        //     try {
+        //         // logDataModel = new LogDataModel();
 
-                // log = logDataModel.Excluir(pId);
-                log = new LogTransfer();
-            } catch (Exception ex) {
-                log = new LogTransfer();
+        //         // log = logDataModel.Excluir(pId);
+        //         log = new LogTransfer();
+        //     } catch (Exception ex) {
+        //         log = new LogTransfer();
 
-                log.Validacao = false;
-                log.Erro = true;
-                log.IncluirMensagem("Erro em LogModel Excluir [" + ex.Message + "]");
-            } finally {
-                // logDataModel = null;
-            }
+        //         log.Validacao = false;
+        //         log.Erro = true;
+        //         log.IncluirMensagem("Erro em LogModel Excluir [" + ex.Message + "]");
+        //     } finally {
+        //         // logDataModel = null;
+        //     }
 
-            return log;
-        }
+        //     return log;
+        // }
 
-        public LogTransfer ConsultarPorId(int pId)
-        {
-            // LogDataModel logDataModel;
-            LogTransfer log;
+        // public LogTransfer ConsultarPorId(int pId)
+        // {
+        //     // LogDataModel logDataModel;
+        //     LogTransfer log;
             
-            try {
-                // logDataModel = new LogDataModel();
+        //     try {
+        //         // logDataModel = new LogDataModel();
 
-                // log = logDataModel.ConsultarPorId(pId);
-                log = new LogTransfer();
-            } catch (Exception ex) {
-                log = new LogTransfer();
+        //         // log = logDataModel.ConsultarPorId(pId);
+        //         log = new LogTransfer();
+        //     } catch (Exception ex) {
+        //         log = new LogTransfer();
 
-                log.Validacao = false;
-                log.Erro = true;
-                log.IncluirMensagem("Erro em LogModel ConsultarPorId [" + ex.Message + "]");
-            } finally {
-                // logDataModel = null;
-            }
+        //         log.Validacao = false;
+        //         log.Erro = true;
+        //         log.IncluirMensagem("Erro em LogModel ConsultarPorId [" + ex.Message + "]");
+        //     } finally {
+        //         // logDataModel = null;
+        //     }
 
-            return log;
-        }
+        //     return log;
+        // }
 
         public LogTransfer Consultar(LogTransfer pLogLista)
         {
-            // LogDataModel logDataModel;
+            LogDataModel logDataModel;
             // LogBusiness logBusiness;
             LogTransfer logValidacao;
             LogTransfer logLista;
 
             try {
                 // logBusiness = new LogBusiness();
-                // logDataModel = new LogDataModel();
+                logDataModel = new LogDataModel();
 
                 // logValidacao = logBusiness.ValidarConsulta(pLogLista);
-                logValidacao = new LogTransfer();
+                logValidacao = new LogTransfer(pLogLista);
 
                 if (!logValidacao.Erro) {
                     if (logValidacao.Validacao) {
-                        // logLista = logDataModel.Consultar(logValidacao);
-                        logLista = new LogTransfer();
+                        logLista = logDataModel.Consultar(logValidacao);
 
                         if (logLista != null) {
                             if (logLista.Paginacao.TotalRegistros > 0) {
@@ -159,6 +158,9 @@ namespace rcLogWebApi.Models
                                 logLista.Paginacao.TotalPaginas = 
                                     Convert.ToInt32(Math.Ceiling(Convert.ToDecimal(logLista.Paginacao.TotalRegistros) 
                                     / @Convert.ToDecimal(logLista.Paginacao.RegistrosPorPagina)));
+                                if (logLista.Paginacao.PaginaAtual > logLista.Paginacao.TotalPaginas) {
+                                    logLista.Paginacao.PaginaAtual = logLista.Paginacao.TotalPaginas;
+                                }
                             }
                         }
                     } else {
@@ -174,7 +176,7 @@ namespace rcLogWebApi.Models
                 logLista.Erro = true;
                 logLista.IncluirMensagem("Erro em LogModel Consultar [" + ex.Message + "]");
             } finally {
-                // logDataModel = null;
+                logDataModel = null;
                 // logBusiness = null;
                 logValidacao = null;
             }
