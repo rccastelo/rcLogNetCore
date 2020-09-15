@@ -6,128 +6,128 @@ namespace rcLogWebApi.Models
 {
     public class SistemaModel
     {
-        public SistemaTransfer Incluir(SistemaTransfer pSistema)
-        {
-            SistemaDataModel sistemaDataModel;
-            SistemaTransfer sistemaValidacao;
-            SistemaTransfer sistemaInclusao;
+        // public SistemaTransfer Incluir(SistemaTransfer pSistema)
+        // {
+        //     SistemaDataModel sistemaDataModel;
+        //     SistemaTransfer sistemaValidacao;
+        //     SistemaTransfer sistemaInclusao;
 
-            try {
-                // sistemaBusiness = new SistemaBusiness();
-                sistemaDataModel = new SistemaDataModel();
+        //     try {
+        //         // sistemaBusiness = new SistemaBusiness();
+        //         sistemaDataModel = new SistemaDataModel();
 
-                // sistemaValidacao = sistemaBusiness.Validar(pSistema);
-                sistemaValidacao = new SistemaTransfer();
+        //         // sistemaValidacao = sistemaBusiness.Validar(pSistema);
+        //         sistemaValidacao = new SistemaTransfer();
 
-                if (!sistemaValidacao.Erro) {
-                    if (sistemaValidacao.Validacao) {
-                        // sistemaInclusao = sistemaDataModel.Incluir(sistemaValidacao);
-                        sistemaInclusao = new SistemaTransfer();
-                    } else {
-                        sistemaInclusao = new SistemaTransfer(sistemaValidacao);
-                    }
-                } else {
-                    sistemaInclusao = new SistemaTransfer(sistemaValidacao);
-                }
-            } catch (Exception ex) {
-                sistemaInclusao = new SistemaTransfer();
+        //         if (!sistemaValidacao.Erro) {
+        //             if (sistemaValidacao.Validacao) {
+        //                 // sistemaInclusao = sistemaDataModel.Incluir(sistemaValidacao);
+        //                 sistemaInclusao = new SistemaTransfer();
+        //             } else {
+        //                 sistemaInclusao = new SistemaTransfer(sistemaValidacao);
+        //             }
+        //         } else {
+        //             sistemaInclusao = new SistemaTransfer(sistemaValidacao);
+        //         }
+        //     } catch (Exception ex) {
+        //         sistemaInclusao = new SistemaTransfer();
 
-                sistemaInclusao.Validacao = false;
-                sistemaInclusao.Erro = true;
-                sistemaInclusao.IncluirMensagem("Erro em SistemaModel Incluir [" + ex.Message + "]");
-            } finally {
-                sistemaDataModel = null;
-                // sistemaBusiness = null;
-                sistemaValidacao = null;
-            }
+        //         sistemaInclusao.Validacao = false;
+        //         sistemaInclusao.Erro = true;
+        //         sistemaInclusao.IncluirMensagem("Erro em SistemaModel Incluir [" + ex.Message + "]");
+        //     } finally {
+        //         sistemaDataModel = null;
+        //         // sistemaBusiness = null;
+        //         sistemaValidacao = null;
+        //     }
 
-            return sistemaInclusao;
-        }
+        //     return sistemaInclusao;
+        // }
 
-        public SistemaTransfer Alterar(SistemaTransfer pSistema)
-        {
-            // SistemaDataModel sistemaDataModel;
-            // SistemaBusiness sistemaBusiness;
-            SistemaTransfer sistemaValidacao;
-            SistemaTransfer sistemaAlteracao;
+        // public SistemaTransfer Alterar(SistemaTransfer pSistema)
+        // {
+        //     // SistemaDataModel sistemaDataModel;
+        //     // SistemaBusiness sistemaBusiness;
+        //     SistemaTransfer sistemaValidacao;
+        //     SistemaTransfer sistemaAlteracao;
 
-            try {
-                // sistemaBusiness = new SistemaBusiness();
-                // sistemaDataModel = new SistemaDataModel();
+        //     try {
+        //         // sistemaBusiness = new SistemaBusiness();
+        //         // sistemaDataModel = new SistemaDataModel();
 
-                // sistemaValidacao = sistemaBusiness.Validar(pSistema);
-                sistemaValidacao = new SistemaTransfer();
+        //         // sistemaValidacao = sistemaBusiness.Validar(pSistema);
+        //         sistemaValidacao = new SistemaTransfer();
 
-                if (!sistemaValidacao.Erro) {
-                    if (sistemaValidacao.Validacao) {
-                        // sistemaAlteracao = sistemaDataModel.Alterar(sistemaValidacao);
-                        sistemaAlteracao = new SistemaTransfer();
-                    } else {
-                        sistemaAlteracao = new SistemaTransfer(sistemaValidacao);
-                    }
-                } else {
-                    sistemaAlteracao = new SistemaTransfer(sistemaValidacao);
-                }
-            } catch (Exception ex) {
-                sistemaAlteracao = new SistemaTransfer();
+        //         if (!sistemaValidacao.Erro) {
+        //             if (sistemaValidacao.Validacao) {
+        //                 // sistemaAlteracao = sistemaDataModel.Alterar(sistemaValidacao);
+        //                 sistemaAlteracao = new SistemaTransfer();
+        //             } else {
+        //                 sistemaAlteracao = new SistemaTransfer(sistemaValidacao);
+        //             }
+        //         } else {
+        //             sistemaAlteracao = new SistemaTransfer(sistemaValidacao);
+        //         }
+        //     } catch (Exception ex) {
+        //         sistemaAlteracao = new SistemaTransfer();
 
-                sistemaAlteracao.Validacao = false;
-                sistemaAlteracao.Erro = true;
-                sistemaAlteracao.IncluirMensagem("Erro em SistemaModel Alterar [" + ex.Message + "]");
-            } finally {
-                // sistemaDataModel = null;
-                // sistemaBusiness = null;
-                sistemaValidacao = null;
-            }
+        //         sistemaAlteracao.Validacao = false;
+        //         sistemaAlteracao.Erro = true;
+        //         sistemaAlteracao.IncluirMensagem("Erro em SistemaModel Alterar [" + ex.Message + "]");
+        //     } finally {
+        //         // sistemaDataModel = null;
+        //         // sistemaBusiness = null;
+        //         sistemaValidacao = null;
+        //     }
 
-            return sistemaAlteracao;
-        }
+        //     return sistemaAlteracao;
+        // }
 
-        public SistemaTransfer Excluir(int pId)
-        {
-            // SistemaDataModel sistemaDataModel;
-            SistemaTransfer sistema;
+        // public SistemaTransfer Excluir(int pId)
+        // {
+        //     // SistemaDataModel sistemaDataModel;
+        //     SistemaTransfer sistema;
 
-            try {
-                // sistemaDataModel = new SistemaDataModel();
+        //     try {
+        //         // sistemaDataModel = new SistemaDataModel();
 
-                // sistema = sistemaDataModel.Excluir(pId);
-                sistema = new SistemaTransfer();
-            } catch (Exception ex) {
-                sistema = new SistemaTransfer();
+        //         // sistema = sistemaDataModel.Excluir(pId);
+        //         sistema = new SistemaTransfer();
+        //     } catch (Exception ex) {
+        //         sistema = new SistemaTransfer();
 
-                sistema.Validacao = false;
-                sistema.Erro = true;
-                sistema.IncluirMensagem("Erro em SistemaModel Excluir [" + ex.Message + "]");
-            } finally {
-                // sistemaDataModel = null;
-            }
+        //         sistema.Validacao = false;
+        //         sistema.Erro = true;
+        //         sistema.IncluirMensagem("Erro em SistemaModel Excluir [" + ex.Message + "]");
+        //     } finally {
+        //         // sistemaDataModel = null;
+        //     }
 
-            return sistema;
-        }
+        //     return sistema;
+        // }
 
-        public SistemaTransfer ConsultarPorId(int pId)
-        {
-            // SistemaDataModel sistemaDataModel;
-            SistemaTransfer sistema;
+        // public SistemaTransfer ConsultarPorId(int pId)
+        // {
+        //     // SistemaDataModel sistemaDataModel;
+        //     SistemaTransfer sistema;
             
-            try {
-                // sistemaDataModel = new SistemaDataModel();
+        //     try {
+        //         // sistemaDataModel = new SistemaDataModel();
 
-                // sistema = sistemaDataModel.ConsultarPorId(pId);
-                sistema = new SistemaTransfer();
-            } catch (Exception ex) {
-                sistema = new SistemaTransfer();
+        //         // sistema = sistemaDataModel.ConsultarPorId(pId);
+        //         sistema = new SistemaTransfer();
+        //     } catch (Exception ex) {
+        //         sistema = new SistemaTransfer();
 
-                sistema.Validacao = false;
-                sistema.Erro = true;
-                sistema.IncluirMensagem("Erro em SistemaModel ConsultarPorId [" + ex.Message + "]");
-            } finally {
-                // sistemaDataModel = null;
-            }
+        //         sistema.Validacao = false;
+        //         sistema.Erro = true;
+        //         sistema.IncluirMensagem("Erro em SistemaModel ConsultarPorId [" + ex.Message + "]");
+        //     } finally {
+        //         // sistemaDataModel = null;
+        //     }
 
-            return sistema;
-        }
+        //     return sistema;
+        // }
 
         public SistemaTransfer Consultar(SistemaTransfer pSistemaLista)
         {

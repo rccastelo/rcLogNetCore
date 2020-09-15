@@ -2,6 +2,7 @@ using System;
 using System.Net;
 using System.Net.Http;
 using System.Net.Http.Headers;
+using System.Text;
 using System.Threading.Tasks;
 using Newtonsoft.Json;
 using rcLogTransfers;
@@ -145,46 +146,46 @@ namespace rcLogWeb.Services
         //     return log;
         // }
 
-        public async Task<LogTransfer> ConsultarPorId(int pId, string pAutorizacao)
-        {
-            LogTransfer log = null;
-            HttpResponseMessage resposta = null;
-            string mensagemRetono = null;
+        // public async Task<LogTransfer> ConsultarPorId(int pId, string pAutorizacao)
+        // {
+        //     LogTransfer log = null;
+        //     HttpResponseMessage resposta = null;
+        //     string mensagemRetono = null;
             
-            try {
-                httpClient.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("Bearer", pAutorizacao);
+        //     try {
+        //         httpClient.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("Bearer", pAutorizacao);
 
-                resposta = await httpClient.GetAsync($"{nomeServico}/{pId}");
+        //         resposta = await httpClient.GetAsync($"{nomeServico}/{pId}");
 
-                if (resposta.IsSuccessStatusCode) {
-                    log = JsonConvert.DeserializeObject<LogTransfer>(resposta.Content.ReadAsStringAsync().Result);
-                } else if (resposta.StatusCode == HttpStatusCode.BadRequest) {
-                    log = JsonConvert.DeserializeObject<LogTransfer>(resposta.Content.ReadAsStringAsync().Result);
-                } else if (resposta.StatusCode == HttpStatusCode.Unauthorized) {
-                    mensagemRetono = $"Acesso ao serviço {nomeServico} ConsultarPorId não autorizado";
-                } else {
-                    mensagemRetono = $"Não foi possível acessar o serviço {nomeServico} ConsultarPorId";
-                }
+        //         if (resposta.IsSuccessStatusCode) {
+        //             log = JsonConvert.DeserializeObject<LogTransfer>(resposta.Content.ReadAsStringAsync().Result);
+        //         } else if (resposta.StatusCode == HttpStatusCode.BadRequest) {
+        //             log = JsonConvert.DeserializeObject<LogTransfer>(resposta.Content.ReadAsStringAsync().Result);
+        //         } else if (resposta.StatusCode == HttpStatusCode.Unauthorized) {
+        //             mensagemRetono = $"Acesso ao serviço {nomeServico} ConsultarPorId não autorizado";
+        //         } else {
+        //             mensagemRetono = $"Não foi possível acessar o serviço {nomeServico} ConsultarPorId";
+        //         }
 
-                if (!string.IsNullOrEmpty(mensagemRetono)) {
-                    log = new LogTransfer();
+        //         if (!string.IsNullOrEmpty(mensagemRetono)) {
+        //             log = new LogTransfer();
                     
-                    log.Validacao = false;
-                    log.Erro = true;
-                    log.IncluirMensagem(mensagemRetono);
-                }
-            } catch (Exception ex) {
-                log = new LogTransfer();
+        //             log.Validacao = false;
+        //             log.Erro = true;
+        //             log.IncluirMensagem(mensagemRetono);
+        //         }
+        //     } catch (Exception ex) {
+        //         log = new LogTransfer();
 
-                log.Validacao = false;
-                log.Erro = true;
-                log.IncluirMensagem("Erro em LogService ConsultarPorId [" + ex.Message + "]");
-            } finally {
-                resposta = null;
-            }
+        //         log.Validacao = false;
+        //         log.Erro = true;
+        //         log.IncluirMensagem("Erro em LogService ConsultarPorId [" + ex.Message + "]");
+        //     } finally {
+        //         resposta = null;
+        //     }
 
-            return log;
-        }
+        //     return log;
+        // }
 
         public async Task<LogTransfer> Consultar(LogTransfer pLogLista, string pAutorizacao)
         {
@@ -195,7 +196,9 @@ namespace rcLogWeb.Services
             try {
                 httpClient.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("Bearer", pAutorizacao);
 
-                resposta = await httpClient.PostAsync($"{nomeServico}/lista", new StringContent(JsonConvert.SerializeObject(pLogLista)));
+                HttpContent content = new StringContent(JsonConvert.SerializeObject(pLogLista), Encoding.UTF8, "application/json");
+
+                resposta = await httpClient.PostAsync($"{nomeServico}/lista", content);
 
                 if (resposta.IsSuccessStatusCode) {
                     logLista = JsonConvert.DeserializeObject<LogTransfer>(resposta.Content.ReadAsStringAsync().Result);
