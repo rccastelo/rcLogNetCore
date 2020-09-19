@@ -2,6 +2,7 @@ using System.Threading.Tasks;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
+using rcLogEntities;
 using rcLogTransfers;
 using rcLogWeb.Models;
 
@@ -25,12 +26,6 @@ namespace rcLogWeb.Controllers
             SistemaTransfer sistemaReq = new SistemaTransfer();
             SistemaTransfer sistemaRes = new SistemaTransfer();
 
-            sistemaReq.Paginacao.RegistrosPorPagina = 3;
-            // sistemaReq.Paginacao.PaginaAtual = 2;
-            // sistemaReq.Sistema = new rcLogEntities.SistemaEntity();
-            // sistemaReq.Sistema.Codigo = "cod";
-            // sistemaReq.Filtro.Descricao = "desc";
-
             sistemaRes = await sistemaModel.Consultar(sistemaReq);
 
             return View(sistemaRes);
@@ -44,16 +39,18 @@ namespace rcLogWeb.Controllers
 
             SistemaModel sistemaModel = new SistemaModel(httpContext);
 
-            SistemaTransfer sistemaReq = new SistemaTransfer(pSistema);
             SistemaTransfer sistemaRes = new SistemaTransfer();
 
-            sistemaReq.Paginacao.RegistrosPorPagina = 3;
-            // sistemaReq.Paginacao.PaginaAtual = 2;
-            // sistemaReq.Sistema = new rcLogEntities.SistemaEntity();
-            // sistemaReq.Sistema.Codigo = "cod";
-            // sistemaReq.Filtro.Descricao = "desc";
+            sistemaRes = await sistemaModel.Consultar(pSistema);
 
-            sistemaRes = await sistemaModel.Consultar(sistemaReq);
+            if(pSistema != null) {
+                if(pSistema.Sistema != null) {
+                    if(pSistema.Sistema.Id > 0) {
+                        sistemaRes.Sistema = new SistemaEntity();
+                        sistemaRes.Sistema.Id = pSistema.Sistema.Id;
+                    }
+                }
+            }
 
             return View(sistemaRes);
         }

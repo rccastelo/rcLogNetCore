@@ -8,10 +8,7 @@ body { background-color: #1e1e1e;
     padding: 30px; background-color: #555; border: 1px solid white; }
 .divBarraMenu { display: inline-block; width: 100%; text-align: justify; height: 50px; 
     padding-top: 10px; border-bottom: 1px solid white; }
-.Logo { float: left; padding: 10px; }
-.Opcoes { float: left; padding: 10px; }
-.Usuario { float: right; padding: 10px; }
-.Bloqueio { float: right; padding: 10px; }
+.itemMenu { padding: 10px; }
 .txtBloqueio { font-weight: bold; font-size: 20px; line-height: 20px; color: red; text-decoration: none; }
 .txtBarraMenu { font-weight: bold; font-size: 20px; line-height: 20px; color: white; text-decoration: none; }
 .menuOpcao { padding-left: 25px; }
@@ -20,14 +17,27 @@ body { background-color: #1e1e1e;
     font-size: 18px; line-height: 18px; color: white; text-decoration: none; }
 .txtPadraoClrGrd, .txtPadraoClrGrd:hover, .txtPadraoClrGrd:visited { 
     font-size: 32px; line-height: 32px; color: white; text-decoration: none; }
+.cxTitDir { width: 90px; height: 26px; padding: 3px; margin-top: 5px; display: inline-block; text-align: right; }
 .caixaTexto { width: 250px; height: 26px; padding: 3px; font-size: 18px; line-height: 18px; margin-top: 5px; }
-.txtPaginacaoInfo { font-size: 16px; color: #888; }
+.caixaTextoPeq { width: 100px; height: 26px; padding: 3px; font-size: 18px; line-height: 18px; margin-top: 5px; }
+.caixaTextoGrd { width: 400px; height: 26px; padding: 3px; font-size: 18px; line-height: 18px; margin-top: 5px; }
+    .txtPaginacaoInfo { font-size: 16px; color: #888; }
 .divConteudo { display: block; min-width: 770px; max-width: 1600px; margin: 0 auto; text-align: center; }
 .divConteudoMeio { display: inline-block; padding: 20px; }
 .divPaginacaoInfo { padding-top: 20px; }
-.botaoPadrao { display: inline-block; width: 100px; height: 40px; background-color: #888; padding: 10px;
-    border: 1px solid #888; }
-.txtBotao { font-size: 18px; line-height: 18px; color: black; text-decoration: none; }
+.botao { min-width: 100px; height: 40px; padding: 10px; cursor: pointer; }
+.botaoCinza { display: inline-block; background-color: #888; padding: 10px;
+    border: 1px solid #888; color: black; }
+.botaoVerde { display: inline-block; background-color: #337733; padding: 10px;
+    border: 1px solid #337733; color: white; }
+.botaoVermelho { display: inline-block; background-color: #883333; padding: 10px;
+    border: 1px solid #773333; color: white; }
+.txtBotao { font-size: 18px; line-height: 18px; text-decoration: none; }
+.divFiltro { border: 1px solid #fff; width: 600px; height: 190px;
+    text-align: left; padding: 20px; }
+.divCol { display: block; }
+.esquerda { float: left; }
+.direita { float: right; }
 
 /* -- Tabela -- */
 .tabela { border: 1px solid white; border-collapse: collapse; width: 100%; }
