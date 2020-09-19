@@ -6,3 +6,12 @@
     
     form.submit();
 }
+
+function consultarPorId(id) {
+    var form = document.getElementById("form");
+    var sistemaId = document.getElementById("Sistema_Id");
+
+    sistemaId.value = id;
+    
+    form.submit();
+}

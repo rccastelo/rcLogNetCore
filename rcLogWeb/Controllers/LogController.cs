@@ -25,12 +25,6 @@ namespace rcLogWeb.Controllers
             LogTransfer logReq = new LogTransfer();
             LogTransfer logRes = new LogTransfer();
 
-            logReq.Paginacao.RegistrosPorPagina = 3;
-            // logReq.Paginacao.PaginaAtual = 2;
-            // logReq.Sistema = new rcLogEntities.SistemaEntity();
-            // logReq.Sistema.Codigo = "cod";
-            // logReq.Filtro.Descricao = "desc";
-
             logRes = await logModel.Consultar(logReq);
 
             return View(logRes);
@@ -44,16 +38,9 @@ namespace rcLogWeb.Controllers
 
             LogModel logModel = new LogModel(httpContext);
 
-            LogTransfer logReq = new LogTransfer(pLog);
             LogTransfer logRes = new LogTransfer();
 
-            logReq.Paginacao.RegistrosPorPagina = 3;
-            // logReq.Paginacao.PaginaAtual = 2;
-            // logReq.Sistema = new rcLogEntities.SistemaEntity();
-            // logReq.Sistema.Codigo = "cod";
-            // logReq.Filtro.Descricao = "desc";
-
-            logRes = await logModel.Consultar(logReq);
+            logRes = await logModel.Consultar(pLog);
 
             return View(logRes);
         }

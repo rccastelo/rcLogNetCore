@@ -73,13 +73,13 @@
                     @if (@Model.Lista != null) {
                         @foreach (var item in @Model.Lista) {
                             <tr>
-                                <td><a asp-controller="Log" asp-action="Detalhe" asp-route-id="@item.Id">@item.Id</a></td>
-                                <td><a asp-controller="Log" asp-action="Detalhe" asp-route-id="@item.Id">@item.Data</a></td>
-                                <td><a asp-controller="Log" asp-action="Detalhe" asp-route-id="@item.Id">@item.Hora</a></td>
-                                <td><a asp-controller="Log" asp-action="Detalhe" asp-route-id="@item.Id">@item.Sistema</a></td>
-                                <td><a asp-controller="Log" asp-action="Detalhe" asp-route-id="@item.Id">@item.Tipo</a></td>
-                                <td><a asp-controller="Log" asp-action="Detalhe" asp-route-id="@item.Id">@item.Descricao</a></td>
-                                <td><a asp-controller="Log" asp-action="Detalhe" asp-route-id="@item.Id">@item.Mensagem</a></td>
+                                <td><a class="txtPadraoClr" asp-controller="Log" asp-action="Detalhe" asp-route-id="@item.Id">@item.Id</a></td>
+                                <td><a class="txtPadraoClr" asp-controller="Log" asp-action="Detalhe" asp-route-id="@item.Id">@item.Data</a></td>
+                                <td><a class="txtPadraoClr" asp-controller="Log" asp-action="Detalhe" asp-route-id="@item.Id">@item.Hora</a></td>
+                                <td><a class="txtPadraoClr" asp-controller="Log" asp-action="Detalhe" asp-route-id="@item.Id">@item.Sistema</a></td>
+                                <td><a class="txtPadraoClr" asp-controller="Log" asp-action="Detalhe" asp-route-id="@item.Id">@item.Tipo</a></td>
+                                <td><a class="txtPadraoClr" asp-controller="Log" asp-action="Detalhe" asp-route-id="@item.Id">@item.Descricao</a></td>
+                                <td><a class="txtPadraoClr" asp-controller="Log" asp-action="Detalhe" asp-route-id="@item.Id">@item.Mensagem</a></td>
                             </tr>
                         }
                     }

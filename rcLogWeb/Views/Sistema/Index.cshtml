@@ -5,127 +5,152 @@
 }
 
 <div class="divConteudo">
-    <div class="divConteudoMeio">
-        <form id="form" asp-controller="Sistema" asp-action="Consulta" asp-anti-forgery method="post">
-            @Html.AntiForgeryToken()
-            <input type="hidden" asp-for="@Model.Paginacao.PaginaAtual">
-            <input type="hidden" asp-for="@Model.Paginacao.RegistrosPorPagina">
-            <input type="hidden" asp-for="@Model.Filtro.IdDe">
-            <input type="hidden" asp-for="@Model.Filtro.IdAte">
-            <input type="hidden" asp-for="@Model.Filtro.Descricao">
-            <input type="hidden" asp-for="@Model.Filtro.Codigo">
-            <input type="hidden" asp-for="@Model.Filtro.Ativo">
-            <input type="hidden" asp-for="@Model.Filtro.CriacaoDe">
-            <input type="hidden" asp-for="@Model.Filtro.CriacaoAte">
-            <input type="hidden" asp-for="@Model.Filtro.AlteracaoDe">
-            <input type="hidden" asp-for="@Model.Filtro.AlteracaoAte">
-            @* Se retornou registro(s), mostrar paginação *@
-            @if (Model.Paginacao.TotalRegistros > 0) {
-                <nav class="navBarra">
-                    @if (Model.Paginacao.PaginaAtual < 2) {
-                        <span class="navCaixaGr">Primeira</span>
-                        <span class="navCaixaGr">Anterior</span>
-                    } else {
-                        <a class="txtPaginacao" href="javascript:paginar(1);"><span class="botaoGr">Primeira</span></a>
-                        <a class="txtPaginacao" href="javascript:paginar(@(Model.Paginacao.PaginaAtual - 1));"><span class="botaoGr">Anterior</span></a>
-                    }
-                    @if (Model.Paginacao.PaginaInicial > 1 ) {
-                        <span class="navCaixaPq">...</span>
-                    } else {
-                        <span class="navCaixaPq"></span>
-                    }
-                    @for (int pag = Model.Paginacao.PaginaInicial; pag <= Model.Paginacao.PaginaFinal; pag++)
-                    {
-                        @if (pag == Model.Paginacao.PaginaAtual) {
-                            <span class="navCaixaSel">@pag</span>
-                        } else {
-                            <a class="txtPaginacao" href="javascript:paginar(@pag);"><span class="botaoPq">@pag</span></a>
-                        }
-                    }
-                    @if (Model.Paginacao.PaginaFinal < Model.Paginacao.TotalPaginas) {
-                        <span class="navCaixaPq">...</span>
-                    } else {
-                        <span class="navCaixaPq"></span>
-                    }
-                    @if (Model.Paginacao.PaginaAtual < Model.Paginacao.TotalPaginas) {
-                        <a class="txtPaginacao" href="javascript:paginar(@(Model.Paginacao.PaginaAtual + 1));"><span class="botaoGr">Próximo</span></a>
-                        <a class="txtPaginacao" href="javascript:paginar(@Model.Paginacao.TotalPaginas);"><span class="botaoGr">Última</span></a>
-                    } else {
-                        <span class="navCaixaGr">Próximo</span>
-                        <span class="navCaixaGr">Última</span>
-                    }
-                </nav>
-            }
-            <br>
-            <table class="tabela txtPadraoClr">
-                <thead>
-                    <tr>
-                        <th>Id</th>
-                        <th>Nome</th>
-                        <th>Descrição</th>
-                        <th>Código</th>
-                        <th>Ativo</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    @if (@Model.Lista != null) {
-                        @foreach (var item in @Model.Lista) {
-                            <tr>
-                                <td><a asp-controller="Sistema" asp-action="Detalhe" asp-route-id="@item.Id">@item.Id</a></td>
-                                <td><a asp-controller="Sistema" asp-action="Detalhe" asp-route-id="@item.Id">@item.Nome</a></td>
-                                <td><a asp-controller="Sistema" asp-action="Detalhe" asp-route-id="@item.Id">@item.Descricao</a></td>
-                                <td><a asp-controller="Sistema" asp-action="Detalhe" asp-route-id="@item.Id">@item.Codigo</a></td>
-                                <td><a asp-controller="Sistema" asp-action="Detalhe" asp-route-id="@item.Id">@item.Ativo</a></td>
-                            </tr>
-                        }
-                    }
-                </tbody>
-            </table>
-            <div class="divPaginacaoInfo txtPaginacaoInfo">
-                <span>@Model.Paginacao.TotalRegistros registro(s)</span> &nbsp; | &nbsp;
-                <span>@Model.Paginacao.RegistrosPorPagina registro(s) por página</span> &nbsp; | &nbsp;
-                <span>@Model.Paginacao.TotalPaginas página(s)</span>
+    <form id="form" asp-controller="Sistema" asp-action="Consulta" asp-anti-forgery method="post">
+        @Html.AntiForgeryToken()
+        <div class="divCol">
+            <div class="divConteudoMeio">
+                <div class="divFiltro">
+                    <label class="cxTitDir txtPadraoClr">Id:</label>
+                    <input type="text" class="caixaTextoPeq" maxlength="20" asp-for="@Model.Sistema.Id">
+                    <label class="cxTitDir txtPadraoClr">Nome:</label>
+                    <input type="text" class="caixaTexto" maxlength="20" asp-for="@Model.Sistema.Nome"><br>
+                    <label class="cxTitDir txtPadraoClr">Descrição:</label>
+                    <input type="text" class="caixaTextoGrd" maxlength="20" asp-for="@Model.Sistema.Descricao"><br>
+                    <label class="cxTitDir txtPadraoClr">Código:</label>
+                    <input type="text" class="caixaTextoPeq" maxlength="20" asp-for="@Model.Sistema.Codigo">
+                    <label class="cxTitDir txtPadraoClr">Ativo:</label>
+                    <input type="text" class="caixaTextoPeq" maxlength="20" asp-for="@Model.Sistema.Ativo"><br>
+                    <br>
+                    <div class="esquerda">
+                        <button class="botao botaoCinza txtBotao">Limpar</button>
+                    </div>
+                    <div class="direita">
+                        <button class="botao botaoVerde txtBotao">Incluir</button>
+                    </div>
+                </div>
             </div>
-            <br>
-            @* Se retornou registro(s), mostrar paginação *@
-            @if (Model.Paginacao.TotalRegistros > 0) {
-                <nav class="navBarra">
-                    @if (Model.Paginacao.PaginaAtual < 2) {
-                        <span class="navCaixaGr">Primeira</span>
-                        <span class="navCaixaGr">Anterior</span>
-                    } else {
-                        <a class="txtPaginacao" href="javascript:paginar(1);"><span class="botaoGr">Primeira</span></a>
-                        <a class="txtPaginacao" href="javascript:paginar(@(Model.Paginacao.PaginaAtual - 1));"><span class="botaoGr">Anterior</span></a>
-                    }
-                    @if (Model.Paginacao.PaginaInicial > 1 ) {
-                        <span class="navCaixaPq">...</span>
-                    } else {
-                        <span class="navCaixaPq"></span>
-                    }
-                    @for (int pag = Model.Paginacao.PaginaInicial; pag <= Model.Paginacao.PaginaFinal; pag++)
-                    {
-                        @if (pag == Model.Paginacao.PaginaAtual) {
-                            <span class="navCaixaSel">@pag</span>
+        </div>
+        <div class="divCol">
+            <div class="divConteudoMeio">
+                <input type="hidden" asp-for="@Model.Paginacao.PaginaAtual">
+                <input type="hidden" asp-for="@Model.Paginacao.RegistrosPorPagina">
+                <input type="hidden" asp-for="@Model.Filtro.IdDe">
+                <input type="hidden" asp-for="@Model.Filtro.IdAte">
+                <input type="hidden" asp-for="@Model.Filtro.Descricao">
+                <input type="hidden" asp-for="@Model.Filtro.Codigo">
+                <input type="hidden" asp-for="@Model.Filtro.Ativo">
+                <input type="hidden" asp-for="@Model.Filtro.CriacaoDe">
+                <input type="hidden" asp-for="@Model.Filtro.CriacaoAte">
+                <input type="hidden" asp-for="@Model.Filtro.AlteracaoDe">
+                <input type="hidden" asp-for="@Model.Filtro.AlteracaoAte">
+                @* Se retornou registro(s), mostrar paginação *@
+                @if (Model.Paginacao.TotalRegistros > 0) {
+                    <nav class="navBarra">
+                        @if (Model.Paginacao.PaginaAtual < 2) {
+                            <span class="navCaixaGr">Primeira</span>
+                            <span class="navCaixaGr">Anterior</span>
                         } else {
-                            <a class="txtPaginacao" href="javascript:paginar(@pag);"><span class="botaoPq">@pag</span></a>
+                            <a class="txtPaginacao" href="javascript:paginar(1);"><span class="botaoGr">Primeira</span></a>
+                            <a class="txtPaginacao" href="javascript:paginar(@(Model.Paginacao.PaginaAtual - 1));"><span class="botaoGr">Anterior</span></a>
                         }
-                    }
-                    @if (Model.Paginacao.PaginaFinal < Model.Paginacao.TotalPaginas) {
-                        <span class="navCaixaPq">...</span>
-                    } else {
-                        <span class="navCaixaPq"></span>
-                    }
-                    @if (Model.Paginacao.PaginaAtual < Model.Paginacao.TotalPaginas) {
-                        <a class="txtPaginacao" href="javascript:paginar(@(Model.Paginacao.PaginaAtual + 1));"><span class="botaoGr">Próximo</span></a>
-                        <a class="txtPaginacao" href="javascript:paginar(@Model.Paginacao.TotalPaginas);"><span class="botaoGr">Última</span></a>
-                    } else {
-                        <span class="navCaixaGr">Próximo</span>
-                        <span class="navCaixaGr">Última</span>
-                    }
-                </nav>
-            }
-            <br>
-        </form>
-    </div>
+                        @if (Model.Paginacao.PaginaInicial > 1 ) {
+                            <span class="navCaixaPq">...</span>
+                        } else {
+                            <span class="navCaixaPq"></span>
+                        }
+                        @for (int pag = Model.Paginacao.PaginaInicial; pag <= Model.Paginacao.PaginaFinal; pag++)
+                        {
+                            @if (pag == Model.Paginacao.PaginaAtual) {
+                                <span class="navCaixaSel">@pag</span>
+                            } else {
+                                <a class="txtPaginacao" href="javascript:paginar(@pag);"><span class="botaoPq">@pag</span></a>
+                            }
+                        }
+                        @if (Model.Paginacao.PaginaFinal < Model.Paginacao.TotalPaginas) {
+                            <span class="navCaixaPq">...</span>
+                        } else {
+                            <span class="navCaixaPq"></span>
+                        }
+                        @if (Model.Paginacao.PaginaAtual < Model.Paginacao.TotalPaginas) {
+                            <a class="txtPaginacao" href="javascript:paginar(@(Model.Paginacao.PaginaAtual + 1));"><span class="botaoGr">Próximo</span></a>
+                            <a class="txtPaginacao" href="javascript:paginar(@Model.Paginacao.TotalPaginas);"><span class="botaoGr">Última</span></a>
+                        } else {
+                            <span class="navCaixaGr">Próximo</span>
+                            <span class="navCaixaGr">Última</span>
+                        }
+                    </nav>
+                }
+                <br>
+                <table class="tabela txtPadraoClr">
+                    <thead>
+                        <tr>
+                            <th>Id</th>
+                            <th>Nome</th>
+                            <th>Descrição</th>
+                            <th>Código</th>
+                            <th>Ativo</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @if (@Model.Lista != null) {
+                            @foreach (var item in @Model.Lista) {
+                                <tr>
+                                    <td><a class="txtPadraoClr" href="javascript:consultarPorId(@item.Id);">@item.Id</a></td>
+                                    <td><a class="txtPadraoClr" href="javascript:consultarPorId(@item.Id);">@item.Nome</a></td>
+                                    <td><a class="txtPadraoClr" href="javascript:consultarPorId(@item.Id);">@item.Descricao</a></td>
+                                    <td><a class="txtPadraoClr" href="javascript:consultarPorId(@item.Id);">@item.Codigo</a></td>
+                                    <td><a class="txtPadraoClr" href="javascript:consultarPorId(@item.Id);">@item.Ativo</a></td>
+                                </tr>
+                            }
+                        }
+                    </tbody>
+                </table>
+                <div class="divPaginacaoInfo txtPaginacaoInfo">
+                    <span>@Model.Paginacao.TotalRegistros registro(s)</span> &nbsp; | &nbsp;
+                    <span>@Model.Paginacao.RegistrosPorPagina registro(s) por página</span> &nbsp; | &nbsp;
+                    <span>@Model.Paginacao.TotalPaginas página(s)</span>
+                </div>
+                <br>
+                @* Se retornou registro(s), mostrar paginação *@
+                @if (Model.Paginacao.TotalRegistros > 0) {
+                    <nav class="navBarra">
+                        @if (Model.Paginacao.PaginaAtual < 2) {
+                            <span class="navCaixaGr">Primeira</span>
+                            <span class="navCaixaGr">Anterior</span>
+                        } else {
+                            <a class="txtPaginacao" href="javascript:paginar(1);"><span class="botaoGr">Primeira</span></a>
+                            <a class="txtPaginacao" href="javascript:paginar(@(Model.Paginacao.PaginaAtual - 1));"><span class="botaoGr">Anterior</span></a>
+                        }
+                        @if (Model.Paginacao.PaginaInicial > 1 ) {
+                            <span class="navCaixaPq">...</span>
+                        } else {
+                            <span class="navCaixaPq"></span>
+                        }
+                        @for (int pag = Model.Paginacao.PaginaInicial; pag <= Model.Paginacao.PaginaFinal; pag++)
+                        {
+                            @if (pag == Model.Paginacao.PaginaAtual) {
+                                <span class="navCaixaSel">@pag</span>
+                            } else {
+                                <a class="txtPaginacao" href="javascript:paginar(@pag);"><span class="botaoPq">@pag</span></a>
+                            }
+                        }
+                        @if (Model.Paginacao.PaginaFinal < Model.Paginacao.TotalPaginas) {
+                            <span class="navCaixaPq">...</span>
+                        } else {
+                            <span class="navCaixaPq"></span>
+                        }
+                        @if (Model.Paginacao.PaginaAtual < Model.Paginacao.TotalPaginas) {
+                            <a class="txtPaginacao" href="javascript:paginar(@(Model.Paginacao.PaginaAtual + 1));"><span class="botaoGr">Próximo</span></a>
+                            <a class="txtPaginacao" href="javascript:paginar(@Model.Paginacao.TotalPaginas);"><span class="botaoGr">Última</span></a>
+                        } else {
+                            <span class="navCaixaGr">Próximo</span>
+                            <span class="navCaixaGr">Última</span>
+                        }
+                    </nav>
+                }
+                <br>
+            </div>
+        </div>
+    </form>
 </div>
 <br>
