@@ -1,10 +1,14 @@
-﻿using System.IO;
+﻿using System;
+using System.Collections.Generic;
+using System.IO;
+using System.Linq;
+using System.Threading.Tasks;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 
-namespace rcLogApi
+namespace rcLogWebApiNetCore
 {
-  public class Program
+    public class Program
     {
         public static void Main(string[] args)
         {
@@ -13,7 +17,6 @@ namespace rcLogApi
                 .UseContentRoot(Directory.GetCurrentDirectory())
                 .UseIISIntegration()
                 .UseStartup<Startup>()
-                .UseUrls("http://localhost:5803/")
                 .Build();
 
             host.Run();

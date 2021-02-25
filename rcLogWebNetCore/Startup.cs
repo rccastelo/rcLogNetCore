@@ -1,12 +1,14 @@
 ﻿using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Threading.Tasks;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Logging;
-using Microsoft.IdentityModel.Tokens;
 
-namespace rcLogWebApi
+namespace rcLogWebNetCore
 {
     public class Startup
     {
@@ -26,7 +28,7 @@ namespace rcLogWebApi
         public void ConfigureServices(IServiceCollection services)
         {
             // Add framework services.
-            services.AddMvc().AddXmlSerializerFormatters();
+            services.AddMvc();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -39,29 +41,19 @@ namespace rcLogWebApi
             {
                 app.UseDeveloperExceptionPage();
             }
-
-            var tokenValidationParameters = new TokenValidationParameters
+            else
             {
-                ValidateIssuerSigningKey = true,
-                IssuerSigningKey = new SymmetricSecurityKey(System.Text.Encoding.UTF8.GetBytes("rc-chave-autenticacao")),
-                ValidateIssuer = true,
-                ValidIssuer = "rc-issuer",
-                ValidateAudience = true,
-                ValidAudience = "rc-audience",
-                ValidateLifetime = true,
-                ClockSkew = TimeSpan.FromMinutes(5)
-            };
+                app.UseExceptionHandler("/Home/Error");
+            }
 
-            var bearerOptions = new JwtBearerOptions
+            app.UseStaticFiles();
+
+            app.UseMvc(routes =>
             {
-                AutomaticAuthenticate = true,
-                AutomaticChallenge = true,
-                TokenValidationParameters = tokenValidationParameters
-            };
-
-            app.UseJwtBearerAuthentication(bearerOptions);
-
-            app.UseMvc().UseJwtBearerAuthentication(bearerOptions);
+                routes.MapRoute(
+                    name: "default",
+                    template: "{controller=Home}/{action=Index}/{id?}");
+            });
         }
     }
 }
