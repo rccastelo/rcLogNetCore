@@ -12,11 +12,9 @@ namespace rcLogTransfers
         public object Links { get; set; }
 
         public void TratarLinks() {
-            string id = ((this.Log != null) ? this.Log.Id.ToString() : "0");
-
             var obj = new object[] {
                 new {
-                    info = "Incluir", 
+                    info = "Consultar", 
                     uri = "/rcLog/Log", 
                     method = "POST"
                 }

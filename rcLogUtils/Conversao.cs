@@ -4,32 +4,43 @@ namespace rcLogUtils
 {
     public class Conversao
     {
-        public static Int32 RetornarInt32(object pObjeto)
+        public static Int32 RetornarInt32(object objeto)
         {
-            int? valor = RetornarInt32N(pObjeto);
+            int? valor = RetornarInt32N(objeto);
 
             return valor.HasValue ? valor.Value : 0;
         } 
 
-        public static Int32? RetornarInt32N(object pObjeto)
+        public static Int32? RetornarInt32N(object objeto)
         {
-            if (pObjeto == null) {
+            if (objeto == null) {
                 return null;
-            } else if (pObjeto == DBNull.Value) {
+            } else if (objeto == DBNull.Value) {
                 return null;
             } else {
-                return Convert.ToInt32(pObjeto);
+                return Convert.ToInt32(objeto);
             }
         }
 
-        public static String RetornarString(object pObjeto)
+        public static String RetornarString(object objeto)
         {
-            if (pObjeto == null) {
+            if (objeto == null) {
                 return null;
-            } else if (pObjeto == DBNull.Value) {
+            } else if (objeto == DBNull.Value) {
                 return null;
             } else {
-                return pObjeto.ToString();
+                return objeto.ToString();
+            }
+        }
+
+        public static bool RetornarBoolean(object objeto)
+        {
+            if (objeto == null) {
+                return false;
+            } else if (objeto == DBNull.Value) {
+                return false;
+            } else {
+                return Convert.ToBoolean(objeto);
             }
         }
     }
