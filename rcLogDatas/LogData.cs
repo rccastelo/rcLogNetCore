@@ -1,4 +1,3 @@
-using System;
 using System.Data.Common;
 using rcLogDatabase;
 using rcLogEntities;
@@ -13,7 +12,7 @@ namespace rcLogDatas
         {
         }
 
-        public LogTransfer Consultar(LogTransfer pLog)
+        public LogTransfer Listar(LogTransfer logDados)
         {
             DbDataReader dr = null;
             LogTransfer ret = null;
@@ -23,15 +22,15 @@ namespace rcLogDatas
             int registrosPorPagina = 0;
             int totalRegistros = 0;
 
-            if (pLog.Paginacao.RegistrosPorPagina < 1) {
+            if (logDados.Paginacao.RegistrosPorPagina < 1) {
                 registrosPorPagina = 30;
-            } else if (pLog.Paginacao.RegistrosPorPagina > 200) {
+            } else if (logDados.Paginacao.RegistrosPorPagina > 200) {
                 registrosPorPagina = 30;
             } else {
-                registrosPorPagina = pLog.Paginacao.RegistrosPorPagina;
+                registrosPorPagina = logDados.Paginacao.RegistrosPorPagina;
             }
 
-            pular = (pLog.Paginacao.PaginaAtual < 2 ? 0 : pLog.Paginacao.PaginaAtual - 1);
+            pular = (logDados.Paginacao.PaginaAtual < 2 ? 0 : logDados.Paginacao.PaginaAtual - 1);
             pular *= registrosPorPagina;
 
             string sqlSelect = $"SELECT l.*, qq.qtd AS qtd_query FROM Log l ";
@@ -52,19 +51,22 @@ namespace rcLogDatas
 
                 if (dr.HasRows) {
                     while(dr.Read()) {
-                        LogEntity sistema = new LogEntity();
+                        LogEntity log = new LogEntity();
 
-                        sistema.Id = Conversao.RetornarInt32(dr["id"]);
-                        sistema.Data = Conversao.RetornarInt32(dr["data"]);
-                        sistema.Hora = Conversao.RetornarInt32(dr["hora"]);
-                        sistema.Sistema = Conversao.RetornarInt32(dr["sistema"]);
-                        sistema.Tipo = Conversao.RetornarInt32(dr["tipo"]);
-                        sistema.Descricao = Conversao.RetornarString(dr["descricao"]);
-                        sistema.Mensagem = Conversao.RetornarString(dr["mensagem"]);
+                        log.Sistema = Conversao.RetornarString(dr["sistema"]);
+                        log.Data = Conversao.RetornarInt32(dr["data"]);
+                        log.Hora = Conversao.RetornarInt32(dr["hora"]);
+                        log.Controle = Conversao.RetornarString(dr["controle"]);
+                        log.Ip = Conversao.RetornarString(dr["ip"]);
+                        log.Tipo = Conversao.RetornarInt32(dr["tipo"]);
+                        log.Mensagem = Conversao.RetornarString(dr["mensagem"]);
+                        log.Pilha = Conversao.RetornarString(dr["pilha"]);
+                        log.Origem = Conversao.RetornarString(dr["origem"]);
+                        log.Critico = Conversao.RetornarBoolean(dr["critico"]);
                         
                         totalRegistros = Conversao.RetornarInt32(dr["qtd_query"]);
 
-                        ret.IncluirLog(sistema);
+                        ret.Incluir(log);
                     }
 
                     ret.Paginacao.RegistrosPorPagina = registrosPorPagina;

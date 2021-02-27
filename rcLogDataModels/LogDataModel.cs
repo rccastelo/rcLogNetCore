@@ -118,28 +118,28 @@ namespace rcLogDataModels
         //     return cor;
         // }
 
-        public LogTransfer Consultar(LogTransfer logTransfer)
+        public LogTransfer Listar(LogTransfer logDados)
         {
             LogData logData;
-            LogTransfer logLista;
+            LogTransfer logRetorno;
 
             try {
                 logData = new LogData(db);
 
-                logLista = logData.Consultar(logTransfer);
+                logRetorno = logData.Listar(logDados);
 
                 db.ConfirmarTransacao();
             } catch (Exception ex) {
-                logLista = new LogTransfer();
+                logRetorno = new LogTransfer();
 
-                logLista.Validacao = false;
-                logLista.Erro = true;
-                logLista.IncluirMensagem("Erro em LogDataModel Consultar [" + ex.Message + "]");
+                logRetorno.Validacao = false;
+                logRetorno.Erro = true;
+                logRetorno.IncluirMensagem("Erro em LogDataModel Consultar [" + ex.Message + "]");
             } finally {
                 logData = null;
             }
 
-            return logLista;
+            return logRetorno;
         }
     }
 }

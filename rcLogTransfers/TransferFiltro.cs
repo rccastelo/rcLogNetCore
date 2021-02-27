@@ -26,18 +26,18 @@ namespace rcLogTransfers
         {
         }
 
-        public TransferFiltro(TransferFiltro pTransfer)
+        public TransferFiltro(TransferFiltro transfer)
         {
-            if (pTransfer != null) {
-                this.IdDe = pTransfer.IdDe;
-                this.IdAte = pTransfer.IdAte;
-                this.Descricao = pTransfer.Descricao;
-                this.Codigo = pTransfer.Codigo;
-                this.Ativo = pTransfer.Ativo;
-                this.CriacaoDe = pTransfer.CriacaoDe;
-                this.CriacaoAte = pTransfer.CriacaoAte;
-                this.AlteracaoDe = pTransfer.AlteracaoDe;
-                this.AlteracaoAte = pTransfer.AlteracaoAte;
+            if (transfer != null) {
+                this.IdDe = transfer.IdDe;
+                this.IdAte = transfer.IdAte;
+                this.Descricao = transfer.Descricao;
+                this.Codigo = transfer.Codigo;
+                this.Ativo = transfer.Ativo;
+                this.CriacaoDe = transfer.CriacaoDe;
+                this.CriacaoAte = transfer.CriacaoAte;
+                this.AlteracaoDe = transfer.AlteracaoDe;
+                this.AlteracaoAte = transfer.AlteracaoAte;
             }
         }
     }
