@@ -3,7 +3,7 @@ using rcLogEntities;
 
 namespace rcLogTransfers
 {
-    public class LogTransfer : TransferLog
+    public class LogTransfer : TransferBase
     {
         public LogEntity Log { get; set; }
 
@@ -14,8 +14,13 @@ namespace rcLogTransfers
         public void TratarLinks() {
             var obj = new object[] {
                 new {
-                    info = "Consultar", 
-                    uri = "/rcLog/Log", 
+                    info = "Incluir", 
+                    uri = "/rcLog/Log/Incluir", 
+                    method = "POST"
+                },
+                new {
+                    info = "Listar", 
+                    uri = "/rcLog/Log/Listar", 
                     method = "POST"
                 }
             };
@@ -23,34 +28,31 @@ namespace rcLogTransfers
             this.Links = obj;
         }
 
-        public LogTransfer() 
-            : base()
+        public LogTransfer() : base()
         {
         }
 
-        public LogTransfer(LogTransfer pTransfer) 
-            : base(pTransfer)
+        public LogTransfer(LogTransfer transfer) : base(transfer)
         {
-            if (pTransfer != null) {
-                if (pTransfer.Lista != null) {
-                    this.Lista = new List<LogEntity>(pTransfer.Lista);
+            if (transfer != null) {
+                if (transfer.Lista != null) {
+                    this.Lista = new List<LogEntity>(transfer.Lista);
                 }
-                if (pTransfer.Log != null) {
-                    this.Log = new LogEntity(pTransfer.Log);
+                if (transfer.Log != null) {
+                    this.Log = new LogEntity(transfer.Log);
                 }
-                this.Links = pTransfer.Links;
+                this.Links = transfer.Links;
             }
         }
 
-        public void IncluirLog(LogEntity pEntity) {
-            if (pEntity != null) {
+        public void Incluir(LogEntity entity) {
+            if (entity != null) {
                 if (this.Lista == null) {
                     this.Lista = new List<LogEntity>();
                 }
 
-                this.Lista.Add(pEntity);
+                this.Lista.Add(entity);
             }
         }
-        
     }
 }

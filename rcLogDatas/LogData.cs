@@ -12,7 +12,7 @@ namespace rcLogDatas
         {
         }
 
-        public LogTransfer Consultar(LogTransfer pLog)
+        public LogTransfer Listar(LogTransfer logDados)
         {
             DbDataReader dr = null;
             LogTransfer ret = null;
@@ -22,15 +22,15 @@ namespace rcLogDatas
             int registrosPorPagina = 0;
             int totalRegistros = 0;
 
-            if (pLog.Paginacao.RegistrosPorPagina < 1) {
+            if (logDados.Paginacao.RegistrosPorPagina < 1) {
                 registrosPorPagina = 30;
-            } else if (pLog.Paginacao.RegistrosPorPagina > 200) {
+            } else if (logDados.Paginacao.RegistrosPorPagina > 200) {
                 registrosPorPagina = 30;
             } else {
-                registrosPorPagina = pLog.Paginacao.RegistrosPorPagina;
+                registrosPorPagina = logDados.Paginacao.RegistrosPorPagina;
             }
 
-            pular = (pLog.Paginacao.PaginaAtual < 2 ? 0 : pLog.Paginacao.PaginaAtual - 1);
+            pular = (logDados.Paginacao.PaginaAtual < 2 ? 0 : logDados.Paginacao.PaginaAtual - 1);
             pular *= registrosPorPagina;
 
             string sqlSelect = $"SELECT l.*, qq.qtd AS qtd_query FROM Log l ";
@@ -66,7 +66,7 @@ namespace rcLogDatas
                         
                         totalRegistros = Conversao.RetornarInt32(dr["qtd_query"]);
 
-                        ret.IncluirLog(log);
+                        ret.Incluir(log);
                     }
 
                     ret.Paginacao.RegistrosPorPagina = registrosPorPagina;

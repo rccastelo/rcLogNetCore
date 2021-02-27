@@ -1,6 +1,6 @@
 namespace rcLogTransfers
 {
-  public class AutenticaTransfer : Transfer
+  public class AutenticaTransfer : TransferBase
     {
         public string Apelido { get; set; }
 
@@ -16,13 +16,13 @@ namespace rcLogTransfers
             this.Token = null;
         }
 
-        public AutenticaTransfer(AutenticaTransfer pTransfer)
+        public AutenticaTransfer(AutenticaTransfer transfer) : base(transfer)
         {
-            if (pTransfer != null) {
-                this.Apelido = pTransfer.Apelido;
-                this.Senha = pTransfer.Senha;
-                this.Token = pTransfer.Token;
-                this.Autenticado = pTransfer.Autenticado;
+            if (transfer != null) {
+                this.Apelido = transfer.Apelido;
+                this.Senha = transfer.Senha;
+                this.Token = transfer.Token;
+                this.Autenticado = transfer.Autenticado;
             }
         }
     }
