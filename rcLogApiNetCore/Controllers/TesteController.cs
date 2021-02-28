@@ -1,6 +1,6 @@
 using Microsoft.AspNetCore.Mvc;
 
-namespace rcLogWebApiNetCore.Controllers
+namespace rcLogApiNetCore.Controllers
 {
     [Route("[controller]")]
     public class TesteController : ControllerBase

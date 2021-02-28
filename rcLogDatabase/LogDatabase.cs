@@ -7,7 +7,7 @@ namespace rcLogDatabase
         private ILogDatabase db;
 
         public LogDatabase() {
-            string dbTipo = Settings.GetSetting("dbTipo");
+            string dbTipo = Settings.GetSetting("DbTipo");
 
             this.db = LogDatabaseFactory.Selecionar(dbTipo);
         }

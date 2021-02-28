@@ -22,7 +22,7 @@ namespace rcLogDatabase
         {
             string chaveConexao = null;
 
-            chaveConexao = Settings.GetConnectionString("sqlserver");
+            chaveConexao = Settings.GetConnectionString("DbSqlServer");
 
             return chaveConexao;
         }

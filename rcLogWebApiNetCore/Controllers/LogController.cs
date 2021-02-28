@@ -71,8 +71,8 @@ namespace rcLogWebApiNetCore.Controllers
         //     }
         // }
 
-        [HttpPost("lista")]
-        public IActionResult Consultar([FromBody] LogTransfer logDados)
+        [HttpPost("Listar")]
+        public IActionResult Listar([FromBody] LogTransfer logDados)
         {
             LogModel logModel;
             LogTransfer logRetorno;
