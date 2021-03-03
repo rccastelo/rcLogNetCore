@@ -1,8 +1,6 @@
-using System.Data.Common;
-
 namespace rcLogDatabase
 {
-    public static class LogDatabaseFactory
+    public class LogDatabaseFactory
     {
         public static ILogDatabase Selecionar(string pTipoDB) {
             ILogDatabase logDatabase;
@@ -20,6 +18,6 @@ namespace rcLogDatabase
             }
 
             return logDatabase;
-        }
+        }        
     }
 }

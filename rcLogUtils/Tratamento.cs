@@ -1,5 +1,3 @@
-﻿using System;
-
 namespace rcLogUtils
 {
     public static class Tratamento

@@ -3,7 +3,7 @@ using Microsoft.Extensions.Configuration;
 
 namespace rcLogDatabase
 {
-     public class Settings
+    public class Settings
     {
         private static string GetSettings(string sectionName, string key) 
         {

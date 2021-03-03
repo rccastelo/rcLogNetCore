@@ -1,3 +1,5 @@
+using System;
+using System.Data;
 using System.Data.Common;
 using rcLogDatabase;
 using rcLogEntities;
@@ -10,6 +12,30 @@ namespace rcLogDatas
     {
         public LogData(LogDatabase pDB) : base(pDB)
         {
+        }
+
+        public LogTransfer Incluir(LogTransfer logDados)
+        {
+            LogTransfer ret;
+
+            try {
+                ret = new LogTransfer();
+
+                LogComando cmd = db.Comando();
+
+                string sqlComando = $"INSERT INTO Log (sistema) VALUES (@sistema)";
+
+                cmd.Comando(sqlComando);
+                cmd.IncluirParametro("@sistema", DbType.String, null, logDados.Log.Sistema);
+
+                cmd.ExecutarComando();
+            } catch (Exception ex) {
+                ret = new LogTransfer();
+                ret.Erro = true;
+                ret.IncluirMensagem("Erro em LogData Incluir [" + ex.Message + "]");
+            }
+
+            return ret;
         }
 
         public LogTransfer Listar(LogTransfer logDados)
@@ -33,14 +59,11 @@ namespace rcLogDatas
             pular = (logDados.Paginacao.PaginaAtual < 2 ? 0 : logDados.Paginacao.PaginaAtual - 1);
             pular *= registrosPorPagina;
 
-            string sqlSelect = $"SELECT l.*, qq.qtd AS qtd_query FROM Log l ";
-            string sqlWhere = "";
-            string sqlJoin = "CROSS JOIN (";
-            string sqlSelectJoin = "SELECT Count(*) AS qtd FROM Log ";
-            string sqlOrder = ") AS qq ORDER BY l.id ";
-            string sqlPaginacao = "OFFSET " + pular + " ROWS FETCH NEXT " + registrosPorPagina + " ROWS ONLY";
+            string sqlSelect = $"SELECT l.*, qq.qtd AS qtd_query FROM Log l " + 
+                "CROSS JOIN ( SELECT Count(*) AS qtd FROM Log ) AS qq ORDER BY l.id ";
+            string sqlPaginacao = $"OFFSET {pular} ROWS FETCH NEXT {registrosPorPagina} ROWS ONLY";
 
-            string sqlComando = sqlSelect + sqlWhere + sqlJoin + sqlSelectJoin + sqlWhere + sqlOrder + sqlPaginacao;
+            string sqlComando = sqlSelect + sqlPaginacao;
 
             cmd.Comando(sqlComando);
 

@@ -21,7 +21,7 @@ namespace rcLogDatabase
         {
             string chaveConexao = null;
 
-            chaveConexao = Settings.GetConnectionString("mysql");
+            chaveConexao = Settings.GetConnectionString("DbMySql");
 
             return chaveConexao;
         }

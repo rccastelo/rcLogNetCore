@@ -1,0 +1,12 @@
+@model LogTransfer
+
+@{
+    ViewData["Title"] = "Lista";
+}
+
+<div class="text-center">
+    <h1 class="display-4">Lista</h1>
+    <form asp-controller="Home" asp-action="Index" asp-anti-forgery method="POST">
+        <button>Index - @Model.nome</button>
+    </form>
+</div>

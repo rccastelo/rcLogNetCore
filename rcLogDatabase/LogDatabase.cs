@@ -1,5 +1,3 @@
-using System.Data.Common;
-
 namespace rcLogDatabase
 {
     public class LogDatabase

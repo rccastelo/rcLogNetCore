@@ -1,11 +1,10 @@
-@{
-    Layout = "_Layout";
-    ViewData["Title"] = "";
+﻿@{
+    ViewData["Title"] = "Index";
 }
 
-<br><br>
-<div>
-    <form asp-controller="Log" asp-action="Filtro" asp-anti-forgery method="POST">
-        <button>Listar</button><br>
+<div class="text-center">
+    <h1 class="display-4">Index</h1>
+    <form asp-controller="Home" asp-action="Lista" asp-anti-forgery method="POST">
+        <button>Lista</button>
     </form>
 </div>
